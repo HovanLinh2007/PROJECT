@@ -1,0 +1,49 @@
+/* bo-cuc.css - Header, footer va khung tong the */
+header {
+    background-color: var(--mau-trang);
+    box-shadow: var(--bong-do);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.thanh-dieu-huong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--mau-nau-dam);
+}
+
+.menu-chinh {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-chinh a {
+    font-weight: 500;
+    color: var(--mau-chu);
+    transition: color 0.3s ease;
+}
+
+.menu-chinh a:hover {
+    color: var(--mau-nau-tra-sua);
+}
+
+.khu-vuc-tai-khoan-gio-hang {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+footer {
+    background-color: var(--mau-nau-dam);
+    color: var(--mau-trang);
+    padding: 40px 0;
+    margin-top: 50px;
+}

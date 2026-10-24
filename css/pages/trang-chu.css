@@ -1,0 +1,197 @@
+/* trang-chu.css - Giao dien rieng cho trang chu */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../tai-nguyen/hinh-anh/banner/banner-chinh.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--mau-trang);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.noi-dung-banner h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.noi-dung-banner p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.phan-san-pham {
+    margin-top: 50px;
+}
+
+.phan-san-pham h2 {
+    text-align: center;
+    font-size: 28px;
+    color: var(--mau-nau-dam);
+    margin-bottom: 30px;
+}
+
+.luoi-san-pham {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.the-san-pham-trang-chu {
+    background: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    padding: 15px;
+    text-align: center;
+}
+
+.the-san-pham-trang-chu img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--bo-goc);
+    margin-bottom: 10px;
+}
+
+.the-san-pham-trang-chu h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.the-san-pham-trang-chu .gia-san-pham {
+    color: var(--mau-nau-tra-sua);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+/* trang-chu.css - Giao dien trang chu hien dai, chuyen nghiep */
+.banner {
+    background: linear-gradient(rgba(139, 90, 43, 0.7), rgba(184, 134, 11, 0.7)), url('../../tai-nguyen/hinh-anh/banner/banner-chinh.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--mau-trang);
+    text-align: center;
+    padding: 120px 20px;
+    margin-bottom: 40px;
+}
+
+.noi-dung-banner h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.noi-dung-banner p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.phan-san-pham {
+    padding: 20px 0 50px 0;
+}
+
+.phan-san-pham h2 {
+    text-align: center;
+    font-size: 30px;
+    color: var(--mau-nau-dam);
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.phan-san-pham h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--mau-nau-tra-sua);
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+.luoi-san-pham {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Chia deu thanh 4 cot tren may tinh */
+    gap: 25px;
+}
+
+.the-san-pham-trang-chu {
+    background: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.the-san-pham-trang-chu:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.the-san-pham-trang-chu img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--bo-goc);
+    margin-bottom: 12px;
+    background-color: var(--mau-kem-sua); /* Tao nen mau kem phong khi chua co anh */
+}
+
+.the-san-pham-trang-chu h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--mau-chu);
+    margin-bottom: 8px;
+    height: 44px; /* Dam bảo deu 2 dong */
+    overflow: hidden;
+}
+
+.the-san-pham-trang-chu .gia-san-pham {
+    color: var(--mau-nau-dam);
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.the-san-pham-trang-chu .nut-bam {
+    display: inline-block;
+    width: 100%;
+    padding: 8px 0;
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.the-san-pham-trang-chu .nut-bam:hover {
+    background-color: var(--mau-nau-dam);
+}
+
+/* Thiet ke dap ung cho dien thoại va may tinh bang */
+@media (max-width: 992px) {
+    .luoi-san-pham {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .luoi-san-pham {
+        grid-template-columns: 1fr;
+    }
+    .noi-dung-banner h1 {
+        font-size: 30px;
+    }
+}
+.banner {
+    background: linear-gradient(rgba(139, 90, 43, 0.7), rgba(184, 134, 11, 0.7)), url('https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--mau-trang);
+    text-align: center;
+    padding: 120px 20px;
+    margin-bottom: 40px;
+}

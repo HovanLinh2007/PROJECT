@@ -1,0 +1,21 @@
+/* co-so.css - Khai bao bien mau sac va gia tri dung chung */
+:root {
+    --mau-nau-tra-sua: #b8860b;
+    --mau-nau-dam: #8b5a2b;
+    --mau-kem-sua: #fdf5e6;
+    --mau-trang: #ffffff;
+    --mau-xanh-la-nhat: #e8f5e9;
+    --mau-xanh-chu-dao: #4caf50;
+    --mau-chu: #333333;
+    --mau-phu: #777777;
+    --mau-do: #e53935;
+    --bong-do: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --bo-goc: 8px;
+    --chieu-rong-toi-da: 1200px;
+}
+
+.vung-chua {
+    max-width: var(--chieu-rong-toi-da);
+    margin: 0 auto;
+    padding: 0 16px;
+}
