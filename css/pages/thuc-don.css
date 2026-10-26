@@ -1,0 +1,111 @@
+/* thuc-don.css - Giao dien trang thuc don hien dai, chia luoi 4 cot */
+.trang-thuc-don { 
+    padding: 40px 16px; 
+}
+
+.tieu-de-trang { 
+    text-align: center; 
+    color: var(--mau-nau-dam); 
+    margin-bottom: 30px; 
+    font-size: 32px;
+}
+
+.thanh-bo-loc {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.thanh-bo-loc input, .thanh-bo-loc select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--bo-goc);
+    font-size: 15px;
+    background-color: var(--mau-trang);
+}
+
+.thanh-bo-loc input { 
+    flex: 1; 
+    min-width: 250px; 
+    max-width: 400px; 
+}
+
+/* Khung luoi chua danh sach san pham */
+#danh-sach-san-pham-thuc-don {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Chia thanh 4 cot deu nhau tren may tinh */
+    gap: 25px;
+}
+
+.the-san-pham-td {
+    background: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.the-san-pham-td:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.the-san-pham-td img {
+    width: 100%;
+    height: 180px; /* Co dinh chieu cao anh de khong bi bop meo */
+    object-fit: cover; /* Cat anh vua khôn khung hinh */
+    border-radius: var(--bo-goc);
+    margin-bottom: 12px;
+    background-color: var(--mau-kem-sua);
+}
+
+.the-san-pham-td h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--mau-chu);
+    margin-bottom: 8px;
+    height: 44px;
+    overflow: hidden;
+}
+
+.the-san-pham-td .gia { 
+    color: var(--mau-nau-dam); 
+    font-weight: bold; 
+    font-size: 17px;
+    margin: 8px 0 15px 0; 
+}
+
+.the-san-pham-td .nut-bam {
+    display: inline-block;
+    width: 100%;
+    padding: 9px 0;
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.the-san-pham-td .nut-bam:hover {
+    background-color: var(--mau-nau-dam);
+}
+
+/* Thiet ket dap ung (Responsive) cho man hinh nho */
+@media (max-width: 992px) {
+    #danh-sach-san-pham-thuc-don {
+        grid-template-columns: repeat(2, 1fr); /* May tinh bang: 2 cot */
+    }
+}
+
+@media (max-width: 576px) {
+    #danh-sach-san-pham-thuc-don {
+        grid-template-columns: 1fr; /* Dien thoai: 1 cot */
+    }
+}

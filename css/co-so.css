@@ -1,6 +1,8 @@
 /* co-so.css - Khai bao bien mau sac va gia tri dung chung */
 :root {
-    --mau-nau-tra-sua: #b8860b;
+    /* --mau-nau-tra-sua: #b8860b; */
+    /* Đổi từ #b8860b sang mã màu mới */
+    --mau-nau-tra-sua: #d4a373;
     --mau-nau-dam: #8b5a2b;
     --mau-kem-sua: #fdf5e6;
     --mau-trang: #ffffff;

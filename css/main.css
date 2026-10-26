@@ -1,14 +1,18 @@
-/* Tệp tổng hợp Import CSS */
-@import url('reset.css');
-@import url('base.css');
-@import url('components.css');
-@import url('layout.css');
-@import url('pages/home.css');
-@import url('pages/menu.css');
-@import url('pages/product-detail.css');
-@import url('pages/cart.css');
-@import url('pages/checkout.css');
-@import url('pages/track-order.css');
-@import url('pages/about.css');
-@import url('pages/contact.css');
-@import url('pages/auth.css');
+/* css/tong-hop.css - Tệp tổng hợp kết nối toàn bộ hệ thống CSS */
+
+/* 1. Hệ thống CSS dùng chung do Trưởng nhóm quản lý */
+@import url('dat-lai.css');
+@import url('co-so.css');
+@import url('thanh-phan-chung.css');
+@import url('bo-cuc.css');
+
+/* 2. Các trang CSS riêng do 5 thành viên phụ trách */
+@import url('trang/trang-chu.css');       /* Linh */
+@import url('trang/thuc-don.css');        /* Lê */
+@import url('trang/chi-tiet.css');        /* Linh */
+@import url('trang/gio-hang.css');        /* Thuận */
+@import url('trang/thanh-toan.css');      /* Thuận */
+@import url('trang/theo-doi.css');        /* Lê */
+@import url('trang/lien-he.css');         /* Tuyết */
+@import url('trang/quan-ly-sp.css');      /* Tuyết */
+@import url('trang/dang-nhap.css');       /* Tâm */
