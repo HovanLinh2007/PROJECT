@@ -1,10 +1,19 @@
-/* bo-cuc.css - Header, footer va khung tong the */
+
+
+/* 1. VÙNG CHỨA CĂN GIỮA (CONTAINER) */
+.vung-chua {
+    max-width: var(--chieu-rong-toi-da);
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* 2. HEADER & THANH ĐIỀU HƯỚNG */
 header {
     background-color: var(--mau-trang);
     box-shadow: var(--bong-do);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .thanh-dieu-huong {
@@ -14,36 +23,223 @@ header {
     height: 70px;
 }
 
-.logo span {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--mau-nau-dam);
-}
-
-.menu-chinh {
+/* LOGO */
+.logo {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
 }
 
-.menu-chinh a {
-    font-weight: 500;
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 800;
     color: var(--mau-chu);
-    transition: color 0.3s ease;
+    letter-spacing: 1px;
 }
 
-.menu-chinh a:hover {
+.logo-text span {
     color: var(--mau-nau-tra-sua);
 }
 
-.khu-vuc-tai-khoan-gio-hang {
+/* MENU CHÍNH */
+.menu-chinh {
     display: flex;
-    gap: 15px;
-    align-items: center;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
 }
 
-footer {
+.menu-chinh a {
+    text-decoration: none;
+    color: var(--mau-phu4);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.menu-chinh a:hover,
+.menu-chinh a.active {
+    color: var(--mau-nau-tra-sua);
+}
+
+/* KHU VỰC TÀI KHOẢN & GIỎ HÀNG */
+.khu-vuc-tai-khoan-gio-hang {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nut-gio-hang-head {
+    position: relative;
+    font-size: 20px;
+    color: var(--mau-chu);
+    text-decoration: none;
+    padding: 5px;
+}
+
+.badge-gio-hang {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: var(--mau-do);
+    color: var(--mau-trang);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+.nut-hotline {
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    padding: 8px 16px;
+    border-radius: var(--bo-goc);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.nut-hotline:hover {
+    background-color: var(--mau-nau-dam);
+}
+
+/* 3. FOOTER 4 CỘT */
+.footer-moi {
+    background-color: var(--nauf);
+    color: var(--kemf);
+    padding-top: 50px;
+    margin-top: 60px;
+}
+
+.luoi-footer-4col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.logo-ft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--mau-trang);
+}
+
+.logo-icon-ft {
+    width: 30px;
+    height: 30px;
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mo-ta-ft {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--kemf);
+}
+
+.cot-ft h4 {
+    color: var(--mau-trang);
+    font-size: 15px;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+.cot-ft ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cot-ft ul li {
+    margin-bottom: 10px;
+}
+
+.cot-ft ul li a {
+    color: var(--kemf);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.cot-ft ul li a:hover {
+    color: var(--mau-nau-tra-sua);
+}
+
+.cot-ft p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: var(--kemf);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mạng-xa-hoi {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-mxh {
+    width: 36px;
+    height: 36px;
     background-color: var(--mau-nau-dam);
     color: var(--mau-trang);
-    padding: 40px 0;
-    margin-top: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.icon-mxh:hover {
+    background-color: var(--mau-nau-tra-sua);
+}
+
+.footer-bottom-moi {
+    background-color: var(--nauf);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 13px;
+    color: var(--kemf);
+    border-top: 1px solid var(--bong-dof);
+}
+
+/* 4. RESPONSIVE */
+@media (max-width: 768px) {
+    .thanh-dieu-huong {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
+        gap: 15px;
+    }
+    
+    .menu-chinh {
+        gap: 15px;
+        font-size: 14px;
+    }
 }

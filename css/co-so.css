@@ -14,6 +14,10 @@
     --bong-do: 0 4px 6px rgba(0, 0, 0, 0.1);
     --bo-goc: 8px;
     --chieu-rong-toi-da: 1200px;
+    /* footer */
+    --nauf: #2b1f17;
+    --kemf: #d1c7bd;
+    --bong-dof: rgba(255,255,255,0.1);
 }
 
 .vung-chua {

@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MILO TEA - Thế Giới Trà Sữa Đậm Vị</title>
-    <!-- Nhung cac file CSS -->
+    <title>MILO TEA - Thế Giới Trà Sữa Đậm Vị Tự Nhiên</title>
+    
+    <!-- Link Font Awesome Icon từ CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Nhúng các file CSS đúng chuẩn sơ đồ thư mục -->
     <link rel="stylesheet" href="./css/dat-lai.css">
     <link rel="stylesheet" href="./css/co-so.css">
     <link rel="stylesheet" href="./css/thanh-phan-chung.css">
@@ -16,55 +20,268 @@
     <header>
         <div class="vung-chua thanh-dieu-huong">
             <a href="trang-chu.html" class="logo">
-                <span>MILO TEA</span>
+                <div class="logo-icon">M</div>
+                <div class="logo-text">MILO <span>TEA</span></div>
             </a>
             <ul class="menu-chinh">
-                <li><a href="trang-chu.html">Trang chủ</a></li>
-                <li><a href="thuc-don.html">Sản Phẩm</a></li>
+                <li><a href="trang-chu.html" class="active">Trang chủ</a></li>
+                <li><a href="thuc-don.html">Thực đơn</a></li>
                 <li><a href="gioi-thieu.html">Giới thiệu</a></li>
                 <li><a href="lien-he.html">Liên hệ</a></li>
+                <li><a href="theo-doi-don-hang.html">Tra cứu đơn</a></li>
             </ul>
             <div class="khu-vuc-tai-khoan-gio-hang">
-                <a href="dang-nhap.html">Đăng nhập</a>
-                <a href="gio-hang.html" class="nut-gio-hang">
-                    Giỏ hàng (<span id="so-luong-gio-hang">0</span>)
+                <a href="gio-hang.html" class="nut-gio-hang-head">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
                 </a>
+                <a href="dang-nhap.html" class="nut-hotline">Đăng nhập</a>
             </div>
         </div>
     </header>
 
-    <!-- Noi dung trang chu -->
     <main>
-        <!-- Banner noi bat -->
-        <section class="banner">
-            <div class="vung-chua noi-dung-banner">
-                <h1>Thưởng Thức Hương Vị Trà Sữa Đậm Đà</h1>
-                <p>Tươi ngon mỗi ngày - Đậm đà vị sữa - Trọn vẹn yêu thương.</p>
-                <a href="thuc-don.html" class="nut-bam">Khám phá ngay</a>
+        <!-- Hero Section Banner -->
+        <section class="hero-section">
+            <div class="vung-chua luoi-hero">
+                <div class="hero-cot-trai">
+                    <span class="the-badge">
+                        <i class="fa-solid fa-leaf"></i> VỊ NGỌT CHUẨN GU - ĐẬM VỊ TRÀ
+                    </span>
+                    <h1>Thưởng Thức <span class="gach-chan">Trà Sữa</span> Đậm Vị Tự Nhiên</h1>
+                    <p class="mo-ta-hero">MILO TEA mang đến hương vị trà sữa nguyên bản kết hợp topping đa dạng, dẻo giòn đậm đà. Đặt ngay để nhận ưu đãi hôm nay!</p>
+                    <div class="nhom-nut-hero">
+                        <a href="thuc-don.html" class="nut-bam">
+                            <i class="fa-solid fa-mug-hot"></i> Đặt Hàng Ngay
+                        </a>
+                        <a href="gioi-thieu.html" class="nut-phu">Tìm Hiểu MILO TEA</a>
+                    </div>
+                </div>
+                <div class="hero-cot-phai">
+                    <div class="khung-anh-hero">
+                        <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=800&q=80" alt="Trà sữa MILO TEA">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- San pham noi bat -->
-        <section class="vung-chua phan-san-pham">
-            <h2>Sản Phẩm Nổi Bật</h2>
-            <div class="luoi-san-pham" id="luoi-san-pham-noi-bat">
-                <!-- Duoc render bang JavaScript -->
+        <!-- Thanh 4 Cam Ket / Uu Diem -->
+        <section class="vung-chua phan-uu-diem">
+            <div class="luoi-uu-diem">
+                <div class="the-uu-diem">
+                    <div class="icon-ud"><i class="fa-solid fa-seedling"></i></div>
+                    <div class="noi-dung-ud">
+                        <h4>Trà Tươi 100%</h4>
+                        <p>Ủ tươi mới 4 tiếng</p>
+                    </div>
+                </div>
+                <div class="the-uu-diem">
+                    <div class="icon-ud"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div class="noi-dung-ud">
+                        <h4>Giao Nhanh 30 Phút</h4>
+                        <p>Giữ nguyên vị độ lạnh</p>
+                    </div>
+                </div>
+                <div class="the-uu-diem">
+                    <div class="icon-ud"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="noi-dung-ud">
+                        <h4>An Toàn Vệ Sinh</h4>
+                        <p>Chuẩn HACCP Quốc Tế</p>
+                    </div>
+                </div>
+                <div class="the-uu-diem">
+                    <div class="icon-ud"><i class="fa-solid fa-heart"></i></div>
+                    <div class="noi-dung-ud">
+                        <h4>Hơn 50.000+ Khách</h4>
+                        <p>Tin dùng mỗi tháng</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Các Dòng Sản Phẩm -->
+        <section class="vung-chua phan-dong-san-pham">
+            <div class="tieu-de-trung-tam">
+                <span class="tieu-de-nho">KHÁM PHÁ THỰC ĐƠN</span>
+                <h2>Các Dòng Sản Phẩm Được Yêu Thích</h2>
+            </div>
+
+            <div class="luoi-the-danh-muc">
+                <div class="the-danh-muc">
+                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80" alt="Trà Sữa Nguyên Bản">
+                    <h3>Trà Sữa Nguyên Bản</h3>
+                    <p>Hương vị trà đậm đà kết hợp cùng lớp kem béo ngậy chuẩn gu.</p>
+                    <a href="thuc-don.html" class="nut-bam">Khám Phá Ngay</a>
+                </div>
+
+                <div class="the-danh-muc">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Trà Trái Cây Tươi">
+                    <h3>Trà Trái Cây Tươi</h3>
+                    <p>Giải nhiệt cực đã với 100% trái cây tươi thiên nhiên ngọt thanh.</p>
+                    <a href="thuc-don.html" class="nut-bam">Khám Phá Ngay</a>
+                </div>
+
+                <div class="the-danh-muc">
+                    <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80" alt="Đá Xay Smoothies">
+                    <h3>Đá Xay & Smoothies</h3>
+                    <p>Sảng khoái tức thì với dòng đá xay tuyết sánh mịn phủ kem tươi.</p>
+                    <a href="thuc-don.html" class="nut-bam">Khám Phá Ngay</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Con Số Ấn Tượng -->
+        <section class="phan-thong-ke">
+            <div class="vung-chua luoi-thong-ke">
+                <div class="muc-thong-ke">
+                    <h2>15+</h2>
+                    <p>Cửa Hàng Toàn Quốc</p>
+                </div>
+                <div class="muc-thong-ke">
+                    <h2>50.000+</h2>
+                    <p>Ly Trà Phục Vụ / Tháng</p>
+                </div>
+                <div class="muc-thong-ke">
+                    <h2>100%</h2>
+                    <p>Lá Trà Sạch Nguyên Chất</p>
+                </div>
+                <div class="muc-thong-ke">
+                    <h2>4.9 ★</h2>
+                    <p>Đánh Giá Hài Lòng</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quy Trình Tạo Nên Ly Trà -->
+        <section class="vung-chua phan-quy-trinh">
+            <div class="tieu-de-trung-tam">
+                <span class="tieu-de-nho">CAM KẾT CHẤT LƯỢNG</span>
+                <h2>Quy Trình 4 Bước Tạo Nên Ly Trà Hoàn Hảo</h2>
+            </div>
+            <div class="luoi-uu-diem luoi-quy-trinh">
+                <div class="the-uu-diem the-quy-trinh">
+                    <i class="fa-solid fa-leaf icon-qt-la"></i>
+                    <h4>1. Lá Trà Tươi</h4>
+                    <p>Tuyển chọn tỉ mỉ từ những đồi trà Lâm Đồng đạt chuẩn sạch.</p>
+                </div>
+                <div class="the-uu-diem the-quy-trinh">
+                    <i class="fa-solid fa-clock icon-qt-gio"></i>
+                    <h4>2. Ủ Trà 4 Giờ</h4>
+                    <p>Nước trà luôn giữ trọn vị tươi mới và hương thơm tự nhiên.</p>
+                </div>
+                <div class="the-uu-diem the-quy-trinh">
+                    <i class="fa-solid fa-glass-water icon-qt-coc"></i>
+                    <h4>3. Topping Dẻo Giòn</h4>
+                    <p>Trân châu nấu mới liên tục trong ngày theo công thức riêng.</p>
+                </div>
+                <div class="the-uu-diem the-quy-trinh">
+                    <i class="fa-solid fa-face-smile icon-qt-cuoi"></i>
+                    <h4>4. Phục Vụ Tận Tâm</h4>
+                    <p>Mang lại niềm vui và trải nghiệm hài lòng cho bạn.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Khuyến Mãi -->
+        <section class="vung-chua phan-km">
+            <div class="khung-banner-km">
+                <div>
+                    <span class="badge-km">🎉 ƯU ĐÃI THÁNG NÀY</span>
+                    <h2>Giảm ngay 20% cho Đơn Hàng Đầu Tiên!</h2>
+                    <p>Nhập mã <b>MILONEW</b> khi thanh toán tại giỏ hàng.</p>
+                </div>
+                <a href="thuc-don.html" class="nut-bam">Đặt Hàng Ngay &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Ý kiến khách hàng -->
+        <section class="phan-danh-gia">
+            <div class="vung-chua">
+                <div class="tieu-de-trung-tam">
+                    <span class="tieu-de-nho">Ý KIẾN KHÁCH HÀNG</span>
+                    <h2>Khách Hàng Nói Gì Về MILO TEA?</h2>
+                </div>
+                <div class="luoi-danh-gia">
+                    <div class="the-danh-gia">
+                        <div class="sao-dg">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="noi-dung-dg">"Trà sữa nướng ở đây thơm đậm vị trà, trân châu đen cực dẻo. Giao hàng cực kỳ nhanh dù trời mưa!"</p>
+                        <div class="tac-gia-dg">
+                            <div class="avatar-tg">AN</div>
+                            <div>
+                                <h5>Minh Anh</h5>
+                                <span>Khách hàng thân thiết</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="the-danh-gia">
+                        <div class="sao-dg">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="noi-dung-dg">"Trà trái cây dừa tươi thanh mát, ngọt vừa đúng 50% đường mình chọn. Sẽ ủng hộ shop dài dài!"</p>
+                        <div class="tac-gia-dg">
+                            <div class="avatar-tg avatar-xanh">HL</div>
+                            <div>
+                                <h5>Hoàng Linh</h5>
+                                <span>Food Reviewer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="the-danh-gia">
+                        <div class="sao-dg">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="noi-dung-dg">"Giao diện đặt đồ trực tuyến rất dễ dùng, tùy chọn size và đường đá trực quan. Đơn hàng cập nhật trạng thái chuẩn xác."</p>
+                        <div class="tac-gia-dg">
+                            <div class="avatar-tg avatar-cam">TK</div>
+                            <div>
+                                <h5>Tuấn Kiệt</h5>
+                                <span>Sinh viên CNTT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="vung-chua">
-            <p>&copy; 2026 MILO TEA. Tất cả các quyền được bảo lưu.</p>
+    <!-- Footer 4 Cot -->
+    <footer class="footer-moi">
+        <div class="vung-chua luoi-footer-4col">
+            <div class="cot-ft">
+                <div class="logo-ft">
+                    <div class="logo-icon-ft">M</div>
+                    <span>MILO TEA</span>
+                </div>
+                <p class="mo-ta-ft">Thương hiệu trà sữa nguyên bản số 1. Luôn mang tới hương vị tự nhiên tươi mới và đảm bảo an toàn sức khỏe cho mọi khách hàng.</p>
+            </div>
+            <div class="cot-ft">
+                <h4>LIÊN KẾT NHANH</h4>
+                <ul>
+                    <li><a href="trang-chu.html">Trang chủ</a></li>
+                    <li><a href="thuc-don.html">Thực đơn trà sữa</a></li>
+                    <li><a href="gioi-thieu.html">Giới thiệu MILO TEA</a></li>
+                    <li><a href="theo-doi-don-hang.html">Theo dõi đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="cot-ft">
+                <h4>CỬA HÀNG</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Thanh Xuân, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> 1900 6568</p>
+                <p><i class="fa-solid fa-envelope"></i> hotro@milotea.vn</p>
+            </div>
+            <div class="cot-ft">
+                <h4>THEO DÕI MILO TEA</h4>
+                <div class="mạng-xa-hoi">
+                    <span class="icon-mxh"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-tiktok"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-moi">
+            <p>&copy; 2026 MILO TEA Website - Đồ án lập trình Frontend cơ bản dành cho sinh viên.</p>
         </div>
     </footer>
-
-    <!-- Nhung cac file JavaScript -->
-    <script src="./js/data/products.js"></script>
-    <script src="./js/tien-ich/dinh-dang.js"></script>
-    <script src="./js/dich-vu/luu-tru.js"></script>
-    <script src="./js/chinh.js"></script>
-    <script src="./js/pages/trang-chu.js"></script>
 </body>
 </html>

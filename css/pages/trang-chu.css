@@ -1,197 +1,399 @@
-/* trang-chu.css - Giao dien rieng cho trang chu */
-.banner {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../tai-nguyen/hinh-anh/banner/banner-chinh.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--mau-trang);
-    text-align: center;
-    padding: 100px 20px;
-}
+/* ==========================================================================
+   CSS RIÊNG CHO TRANG CHỦ (css/trang/trang-chu.css)
+   ========================================================================== */
 
-.noi-dung-banner h1 {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.noi-dung-banner p {
-    font-size: 18px;
-    margin-bottom: 25px;
-}
-
-.phan-san-pham {
-    margin-top: 50px;
-}
-
-.phan-san-pham h2 {
-    text-align: center;
-    font-size: 28px;
-    color: var(--mau-nau-dam);
-    margin-bottom: 30px;
-}
-
-.luoi-san-pham {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.the-san-pham-trang-chu {
-    background: var(--mau-trang);
-    border-radius: var(--bo-goc);
-    box-shadow: var(--bong-do);
-    padding: 15px;
-    text-align: center;
-}
-
-.the-san-pham-trang-chu img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--bo-goc);
-    margin-bottom: 10px;
-}
-
-.the-san-pham-trang-chu h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.the-san-pham-trang-chu .gia-san-pham {
-    color: var(--mau-nau-tra-sua);
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-/* trang-chu.css - Giao dien trang chu hien dai, chuyen nghiep */
-.banner {
-    background: linear-gradient(rgba(139, 90, 43, 0.7), rgba(184, 134, 11, 0.7)), url('../../tai-nguyen/hinh-anh/banner/banner-chinh.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--mau-trang);
-    text-align: center;
-    padding: 120px 20px;
-    margin-bottom: 40px;
-}
-
-.noi-dung-banner h1 {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.noi-dung-banner p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    opacity: 0.95;
-}
-
-.phan-san-pham {
-    padding: 20px 0 50px 0;
-}
-
-.phan-san-pham h2 {
-    text-align: center;
-    font-size: 30px;
-    color: var(--mau-nau-dam);
-    margin-bottom: 35px;
-    position: relative;
-}
-
-.phan-san-pham h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--mau-nau-tra-sua);
-    margin: 8px auto 0 auto;
-    border-radius: 2px;
-}
-
-.luoi-san-pham {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Chia deu thanh 4 cot tren may tinh */
-    gap: 25px;
-}
-
-.the-san-pham-trang-chu {
-    background: var(--mau-trang);
-    border-radius: var(--bo-goc);
-    box-shadow: var(--bong-do);
-    padding: 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.the-san-pham-trang-chu:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-.the-san-pham-trang-chu img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: var(--bo-goc);
-    margin-bottom: 12px;
-    background-color: var(--mau-kem-sua); /* Tao nen mau kem phong khi chua co anh */
-}
-
-.the-san-pham-trang-chu h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--mau-chu);
-    margin-bottom: 8px;
-    height: 44px; /* Dam bảo deu 2 dong */
+/* 1. HERO SECTION BANNER */
+.hero-section {
+    background: linear-gradient(135deg, var(--mau-kem-sua) 0%, #F5EBE1 100%);
+    padding: 60px 0;
     overflow: hidden;
 }
 
-.the-san-pham-trang-chu .gia-san-pham {
-    color: var(--mau-nau-dam);
-    font-size: 17px;
-    font-weight: bold;
-    margin-bottom: 15px;
+.luoi-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
-.the-san-pham-trang-chu .nut-bam {
+.the-badge {
     display: inline-block;
+    background-color: var(--mau-xanh-la-nhat);
+    color: var(--mau-xanh-chu-dao);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-cot-trai h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    color: var(--mau-chu);
+    margin-bottom: 20px;
+}
+
+.gach-chan {
+    color: var(--mau-nau-tra-sua);
+    position: relative;
+    display: inline-block;
+}
+
+.mo-ta-hero {
+    font-size: 16px;
+    color: var(--mau-phu);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.nhom-nut-hero {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nut-phu {
+    padding: 10px 20px;
+    color: var(--mau-phu4);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nut-phu:hover {
+    color: var(--mau-nau-tra-sua);
+}
+
+.khung-anh-hero img {
     width: 100%;
-    padding: 8px 0;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+}
+
+
+/* 2. THANH 4 CAM KẾT / ƯU ĐIỂM */
+.phan-uu-diem {
+    margin-top: -30px;
+    position: relative;
+    z-index: 10;
+}
+
+.luoi-uu-diem {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.the-uu-diem {
+    background-color: var(--mau-trang);
+    padding: 20px;
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.the-uu-diem:hover {
+    transform: translateY(-5px);
+}
+
+.icon-ud {
+    font-size: 28px;
+    color: var(--mau-nau-tra-sua);
+    width: 50px;
+    height: 50px;
+    background-color: var(--mau-kem-sua);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.noi-dung-ud h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: var(--mau-chu);
+}
+
+.noi-dung-ud p {
+    font-size: 13px;
+    color: var(--mau-phu);
+    margin: 0;
+}
+
+
+/* 3. TIÊU ĐỀ SECTION DÙNG CHUNG */
+.tieu-de-trung-tam {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.tieu-de-nho {
+    color: var(--mau-nau-tra-sua);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.tieu-de-trung-tam h2 {
+    font-size: 30px;
+    color: var(--mau-chu);
+}
+
+
+/* 4. DÒNG SẢN PHẨM */
+.phan-dong-san-pham {
+    margin-top: 50px;
+}
+
+.luoi-the-danh-muc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.the-danh-muc {
+    background: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    overflow: hidden;
+    box-shadow: var(--bong-do);
+    text-align: center;
+    padding-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.the-danh-muc:hover {
+    transform: translateY(-5px);
+}
+
+.the-danh-muc img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.the-danh-muc h3 {
+    margin: 15px 0 5px;
+    color: var(--mau-chu);
+}
+
+.the-danh-muc p {
+    color: var(--mau-phu);
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+
+/* 5. THỐNG KÊ (STATISTICS BANNER) */
+.phan-thong-ke {
+    background: var(--mau-kem-sua);
+    padding: 50px 0;
+    margin-top: 60px;
+}
+
+.luoi-thong-ke {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 20px;
+}
+
+.muc-thong-ke h2 {
+    font-size: 38px;
+    color: var(--mau-nau-tra-sua);
+    margin-bottom: 5px;
+}
+
+.muc-thong-ke p {
+    color: var(--mau-phu);
+    font-weight: bold;
+    margin: 0;
+}
+
+
+/* 6. QUY TRÌNH & KHUYẾN MÃI */
+.phan-quy-trinh {
+    margin-top: 50px;
+}
+
+.luoi-quy-trinh {
+    margin-top: 30px;
+}
+
+.the-quy-trinh {
+    text-align: center;
+    display: block;
+    padding: 25px 15px;
+}
+
+.the-quy-trinh i { 
+    font-size: 36px; 
+}
+
+.icon-qt-la { color: var(--mau-xanh-chu-dao); }
+.icon-qt-gio { color: var(--mau-nau-tra-sua); }
+.icon-qt-coc { color: var(--mau-nau-dam); }
+.icon-qt-cuoi { color: var(--mau-do); }
+
+.the-quy-trinh h4 {
+    margin-top: 15px;
+    font-size: 18px;
+    color: var(--mau-chu);
+}
+
+.the-quy-trinh p {
+    color: var(--mau-phu);
+    font-size: 14px;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.phan-km {
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.khung-banner-km {
+    background: linear-gradient(135deg, var(--mau-nau-dam) 0%, var(--mau-nau-tra-sua) 100%);
+    border-radius: var(--bo-goc);
+    padding: 40px;
+    color: var(--mau-trang);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.badge-km {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.khung-banner-km h2 {
+    font-size: 28px;
+    margin: 15px 0 10px 0;
+    color: var(--mau-trang);
+}
+
+.khung-banner-km p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.khung-banner-km b {
+    color: var(--mau-kem-sua);
+    font-size: 18px;
+}
+
+
+/* 7. PHẦN Ý KIẾN KHÁCH HÀNG (REVIEWS) */
+.phan-danh-gia {
+    padding: 60px 0;
+    background-color: var(--mau-kem-sua);
+    margin-top: 50px;
+}
+
+.luoi-danh-gia {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.the-danh-gia {
+    background-color: var(--mau-trang);
+    padding: 25px;
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sao-dg {
+    color: var(--mau-nau-tra-sua);
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.noi-dung-dg {
+    font-size: 14px;
+    color: var(--mau-phu);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.tac-gia-dg {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-tg {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
     background-color: var(--mau-nau-tra-sua);
     color: var(--mau-trang);
-    border-radius: var(--bo-goc);
-    text-align: center;
-    font-weight: 600;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-.the-san-pham-trang-chu .nut-bam:hover {
-    background-color: var(--mau-nau-dam);
+.avatar-xanh { background-color: var(--mau-xanh-chu-dao); }
+.avatar-cam { background-color: var(--mau-nau-dam); }
+
+.tac-gia-dg h5 {
+    margin: 0;
+    font-size: 15px;
+    color: var(--mau-chu);
 }
 
-/* Thiet ke dap ung cho dien thoại va may tinh bang */
-@media (max-width: 992px) {
-    .luoi-san-pham {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.tac-gia-dg span {
+    font-size: 12px;
+    color: var(--mau-phu);
 }
 
-@media (max-width: 576px) {
-    .luoi-san-pham {
+
+/* 8. RESPONSIVE MÀN HÌNH NHỎ */
+@media (max-width: 768px) {
+    .luoi-hero {
         grid-template-columns: 1fr;
+        text-align: center;
     }
-    .noi-dung-banner h1 {
+
+    .hero-cot-trai h1 {
         font-size: 30px;
     }
-}
-.banner {
-    background: linear-gradient(rgba(139, 90, 43, 0.7), rgba(184, 134, 11, 0.7)), url('https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-    color: var(--mau-trang);
-    text-align: center;
-    padding: 120px 20px;
-    margin-bottom: 40px;
+
+    .nhom-nut-hero {
+        justify-content: center;
+    }
+
+    .phan-uu-diem {
+        margin-top: 30px;
+    }
+
+    .khung-banner-km {
+        text-align: center;
+        justify-content: center;
+    }
 }

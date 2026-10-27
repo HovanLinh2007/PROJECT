@@ -1,7 +1,14 @@
 // chinh.js - Xu ly chung cho toan bo website (nhu cap nhat so luong gio hang tren header)
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
+//     capNhatSoLuongGioHangHeader();
+// });
+
+// Bước 1: Tạo một hàm xử lý khi trang web tải xong
+function khiTrangWebTaiXong() {
     capNhatSoLuongGioHangHeader();
-});
+}
+// Bước 2: Dặn trình duyệt khi "DOMContentLoaded" thì gọi hàm trên
+document.addEventListener("DOMContentLoaded", khiTrangWebTaiXong);
 
 function capNhatSoLuongGioHangHeader() {
     const gioHang = layGioHang();
