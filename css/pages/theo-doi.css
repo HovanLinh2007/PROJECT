@@ -1,0 +1,114 @@
+
+/* Nền và khu vực chính */
+.tracking-page {
+    background-color: var(--mau-trang);
+    min-height: 520px;
+    padding: 36px 20px 60px;
+}
+
+/* Tiêu đề */
+.tracking-intro {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.tracking-intro h1 {
+    font-size: 24px;
+    color: #28190f;
+    margin-bottom: 8px;
+}
+
+.tracking-intro p {
+    font-size: 13px;
+    color: #68738a;
+    margin: 0;
+}
+
+/* Khung trắng bao quanh form */
+.tracking-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 22px;
+    background-color: #ffffff;
+    border: 1px solid #f0e9df;
+    border-radius: 22px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Hai ô nhập và nút nằm cùng hàng */
+.tracking-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ô nhập thông tin */
+.tracking-form input {
+    flex: 1;
+    min-width: 0;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #dde1e8;
+    border-radius: 12px;
+    outline: none;
+    font-size: 12px;
+    color: #28190f;
+    background-color: #ffffff;
+}
+
+/* Màu khi nhấn vào ô nhập */
+.tracking-form input:focus {
+    border-color: #925b28;
+    box-shadow: 0 0 0 2px rgba(146, 91, 40, 0.1);
+}
+
+/* Chữ gợi ý trong ô nhập */
+.tracking-form input::placeholder {
+    color: #9099a9;
+}
+
+/* Nút tra cứu */
+.tracking-form button {
+    height: 36px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 12px;
+    background-color: #925b28;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Hiệu ứng khi rê chuột */
+.tracking-form button:hover {
+    background-color: #75451d;
+}
+
+/* Hiển thị tốt trên điện thoại */
+@media (max-width: 600px) {
+    .tracking-page {
+        padding: 28px 16px 40px;
+    }
+
+    .tracking-intro h1 {
+        font-size: 21px;
+    }
+
+    .tracking-container {
+        padding: 16px;
+    }
+
+    .tracking-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tracking-form input,
+    .tracking-form button {
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+    }
+}
