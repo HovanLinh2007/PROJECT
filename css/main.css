@@ -7,12 +7,12 @@
 @import url('bo-cuc.css');
 
 /* 2. Các trang CSS riêng do 5 thành viên phụ trách */
-@import url('trang/trang-chu.css');       /* Linh */
-@import url('trang/thuc-don.css');        /* Lê */
-@import url('trang/chi-tiet.css');        /* Linh */
-@import url('trang/gio-hang.css');        /* Thuận */
-@import url('trang/thanh-toan.css');      /* Thuận */
-@import url('trang/theo-doi.css');        /* Lê */
-@import url('trang/lien-he.css');         /* Tuyết */
-@import url('trang/quan-ly-sp.css');      /* Tuyết */
-@import url('trang/dang-nhap.css');       /* Tâm */
+@import url('./pages/trang-chu.css');       /* Linh */
+@import url('./pages/san-pham.css');        /* Lê */
+@import url('./pages/chi-tiet.css');        /* Linh */
+@import url('./pages/gio-hang.css');        /* Thuận */
+@import url('./pages/thanh-toan.css');      /* Thuận */
+@import url('./pages/theo-doi.css');        /* Lê */
+@import url('./pages/lien-he.css');         /* Tuyết */
+@import url('./pages/quan-ly-sp.css');      /* Tuyết */
+@import url('./pages/dang-nhap.css');       /* Tâm */
