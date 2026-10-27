@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/bo-cuc.css">
+    <link rel="stylesheet" href="./css/co-so.css">
+    <link rel="stylesheet" href="./css/dat-lai.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/thanh-phan-chung.css">
+    <link rel="stylesheet" href="./css/pages/lien-he.css">
+</head>
+<body>
+  <header>
+        <div class="vung-chua thanh-dieu-huong">
+            <a href="trang-chu.html" class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">MILO <span>TEA</span></div>
+            </a>
+            <ul class="menu-chinh">
+                <li><a href="trang-chu.html" class="active">Trang chủ</a></li>
+                <li><a href="thuc-don.html">Thực đơn</a></li>
+                <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+                <li><a href="lien-he.html">Liên hệ</a></li>
+                <li><a href="theo-doi-don-hang.html">Tra cứu đơn</a></li>
+            </ul>
+            <div class="khu-vuc-tai-khoan-gio-hang">
+                <a href="gio-hang.html" class="nut-gio-hang-head">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
+                </a>
+                <a href="dang-nhap.html" class="nut-hotline">Đăng nhập</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Noi dung trang chu -->
+    <main>
+      <main class="lien-he">
+
+        <!-- CỘT THÔNG TIN LIÊN HỆ -->
+        <section class="lien-he__thong-tin">
+
+            <p class="lien-he__thuong-hieu">MILO TEA VIỆT NAM</p>
+
+            <h1 class="lien-he__tieu-de">
+                Kết Nối Với Chúng Tôi
+            </h1>
+
+            <p class="lien-he__mo-ta">
+                Bạn có thắc mắc, góp ý hoặc nhu cầu đặt số lượng lớn cho sự kiện?
+                Hãy liên hệ ngay với MILO TEA qua các kênh bên dưới.
+            </p>
+
+            <div class="lien-he__danh-sach">
+
+                <!-- Địa chỉ -->
+                <div class="lien-he__muc">
+                    <div class="lien-he__icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="lien-he__noi-dung">
+                        <p>Địa chỉ cửa hàng</p>
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=123+Duong+Tra+Sua+Thanh+Xuan+Ha+Noi"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            123 Đường Trà Sữa, Quận Thanh Xuân, Hà Nội
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hotline -->
+                <div class="lien-he__muc">
+                    <div class="lien-he__icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
+                    <div class="lien-he__noi-dung">
+                        <p>Hotline đặt hàng</p>
+
+                        <a href="tel:19006868">1900 6868</a>
+                        <span> - </span>
+                        <a href="tel:0988123456">0988 123 456</a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="lien-he__muc">
+                    <div class="lien-he__icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div class="lien-he__noi-dung">
+                        <p>Email hỗ trợ</p>
+
+                        <a href="mailto:hotro@milotea.vn">
+                            hotro@milotea.vn
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Giờ mở cửa -->
+            <div class="lien-he__gio-mo-cua">
+                Giờ mở cửa: 08:00 - 22:30
+                (Tất cả các ngày trong tuần)
+            </div>
+
+        </section>
+
+        <!-- CỘT FORM LIÊN HỆ -->
+        <section class="lien-he__form-container">
+
+            <h2 class="lien-he__form-tieu-de">
+                Gửi Tin Nhắn Mô Phỏng
+            </h2>
+
+            <div class="lien-he__thong-bao">
+                <i class="fa-solid fa-circle-info"></i>
+
+                <p>
+                    Lưu ý: Đây là form mô phỏng giao diện dành cho học tập
+                    Frontend, chưa tích hợp gửi tin nhắn thật đến Server.
+                </p>
+            </div>
+
+            <form id="form-lien-he">
+
+                <!-- Họ tên -->
+                <div class="lien-he__truong">
+                    <label for="ho-ten">Họ và tên *</label>
+
+                    <input
+                        type="text"
+                        id="ho-ten"
+                        name="hoTen"
+                        placeholder="Nguyễn Văn A"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="lien-he__truong">
+                    <label for="so-dien-thoai">Số điện thoại *</label>
+
+                    <input
+                        type="tel"
+                        id="so-dien-thoai"
+                        name="soDienThoai"
+                        placeholder="0912345678"
+                        autocomplete="tel"
+                        pattern="[0-9+\s().-]{9,15}"
+                        title="Vui lòng nhập số điện thoại hợp lệ"
+                        required
+                    >
+                </div>
+
+                <!-- Nội dung -->
+                <div class="lien-he__truong">
+                    <label for="noi-dung">Nội dung liên hệ *</label>
+
+                    <textarea
+                        id="noi-dung"
+                        name="noiDung"
+                        placeholder="Nhập nội dung bạn muốn góp ý..."
+                        rows="4"
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Nút gửi -->
+                <button type="submit" class="lien-he__nut-gui">
+                    Gửi Liên Hệ (Mô Phỏng)
+                </button>
+
+                <!-- Thông báo kết quả -->
+                <p id="thong-bao-ket-qua"
+                   class="lien-he__ket-qua"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-moi">
+        <div class="vung-chua luoi-footer-4col">
+            <div class="cot-ft">
+                <div class="logo-ft">
+                    <div class="logo-icon-ft">M</div>
+                    <span>MILO TEA</span>
+                </div>
+                <p class="mo-ta-ft">Thương hiệu trà sữa nguyên bản số 1. Luôn mang tới hương vị tự nhiên tươi mới và đảm bảo an toàn sức khỏe cho mọi khách hàng.</p>
+            </div>
+            <div class="cot-ft">
+                <h4>LIÊN KẾT NHANH</h4>
+                <ul>
+                    <li><a href="trang-chu.html">Trang chủ</a></li>
+                    <li><a href="thuc-don.html">Thực đơn trà sữa</a></li>
+                    <li><a href="gioi-thieu.html">Giới thiệu MILO TEA</a></li>
+                    <li><a href="theo-doi-don-hang.html">Theo dõi đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="cot-ft">
+                <h4>CỬA HÀNG</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Thanh Xuân, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> 1900 6568</p>
+                <p><i class="fa-solid fa-envelope"></i> hotro@milotea.vn</p>
+            </div>
+            <div class="cot-ft">
+                <h4>THEO DÕI MILO TEA</h4>
+                <div class="mạng-xa-hoi">
+                    <span class="icon-mxh"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-tiktok"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-moi">
+            <p>&copy; 2026 MILO TEA Website - Đồ án lập trình Frontend cơ bản dành cho sinh viên.</p>
+        </div>
+
+    <!-- Nhung cac file JavaScript -->
+    <script src="./js/data/products.js"></script>
+    <script src="./js/tien-ich/dinh-dang.js"></script>
+    <script src="./js/dich-vu/luu-tru.js"></script>
+    <script src="./js/chinh.js"></script>
+    <script src="./js/pages/trang-chu.js"></script>
+</body>
+</html>
