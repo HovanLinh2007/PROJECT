@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - MILO TEA</title>
+
+    <!-- Link Font Awesome Icon từ CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Nhúng đầy đủ hệ thống CSS chuẩn của dự án -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <!-- Header va Thanh dieu huong -->
+    <header>
+        <div class="vung-chua thanh-dieu-huong">
+            <a href="trang-chu.html" class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">MILO <span>TEA</span></div>
+            </a>
+            <ul class="menu-chinh">
+                <li><a href="trang-chu.html">Trang chủ</a></li>
+                <li><a href="san-pham.html" class="active">Sản Phẩm</a></li>
+                <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+                <li><a href="lien-he.html">Liên hệ</a></li>
+                <li><a href="theo-doi-don-hang.html">Tra cứu đơn</a></li>
+            </ul>
+            <div class="khu-vuc-tai-khoan-gio-hang">
+                <a href="gio-hang.html" class="nut-gio-hang-head">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
+                </a>
+                <a href="dang-nhap.html" class="nut-hotline">Đăng nhập</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Khung chứa chi tiết sản phẩm render động từ JS -->
+    <main class="vung-chua khung-chi-tiet" id="khung-chi-tiet-san-pham">
+        <!-- JS chi-tiet-san-pham.js sẽ render ảnh, thông tin, chọn size/đường/đá và nút Thêm vào giỏ tại đây -->
+    </main>
+
+    <!-- Footer 4 Cột -->
+    <footer class="footer-moi">
+        <div class="vung-chua luoi-footer-4col">
+            <div class="cot-ft">
+                <div class="logo-ft">
+                    <div class="logo-icon-ft">M</div>
+                    <span>MILO TEA</span>
+                </div>
+                <p class="mo-ta-ft">Thương hiệu trà sữa nguyên bản số 1. Luôn mang tới hương vị tự nhiên tươi mới và đảm bảo an toàn sức khỏe cho mọi khách hàng.</p>
+            </div>
+            <div class="cot-ft">
+                <h4>LIÊN KẾT NHANH</h4>
+                <ul>
+                    <li><a href="trang-chu.html">Trang chủ</a></li>
+                    <li><a href="san-pham.html">Thực đơn trà sữa</a></li>
+                    <li><a href="gioi-thieu.html">Giới thiệu MILO TEA</a></li>
+                    <li><a href="theo-doi-don-hang.html">Theo dõi đơn hàng</a></li>
+                </ul>
+            </div>
+            <div class="cot-ft">
+                <h4>CỬA HÀNG</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 123 Thanh Xuân, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> 1900 6568</p>
+                <p><i class="fa-solid fa-envelope"></i> hotro@milotea.vn</p>
+            </div>
+            <div class="cot-ft">
+                <h4>THEO DÕI MILO TEA</h4>
+                <div class="mạng-xa-hoi">
+                    <span class="icon-mxh"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="icon-mxh"><i class="fa-brands fa-tiktok"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-moi">
+            <p>&copy; 2026 MILO TEA Website - Đồ án lập trình Frontend cơ bản dành cho sinh viên.</p>
+        </div>
+    </footer>
+
+    <!-- Các Script xử lý dữ liệu -->
+    <script src="./js/data/products.js"></script>
+    <script src="./js/tien-ich/dinh-dang.js"></script>
+    <script src="./js/dich-vu/luu-tru.js"></script>
+    <script src="./js/chinh.js"></script>
+    <script src="./js/pages/chi-tiet-san-pham.js"></script> 
+</body>
+
+</html>
