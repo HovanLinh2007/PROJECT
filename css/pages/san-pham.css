@@ -1,6 +1,12 @@
 /* thuc-don.css - Giao dien trang thuc don hien dai, chia luoi 4 cot */
+
+/* Cố định khung chứa khớp 100% với .vung-chua của Header/Footer */
 .trang-thuc-don { 
-    padding: 40px 16px; 
+    width: 100%;
+    max-width: var(--chieu-rong-toi-da, 1200px);
+    margin: 0 auto !important; /* Căn giữa chuẩn */
+    padding: 30px 15px !important; /* Đồng bộ 15px lề ngang với .vung-chua */
+    box-sizing: border-box;
 }
 
 .tieu-de-trang { 
@@ -16,6 +22,8 @@
     margin-bottom: 35px;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .thanh-bo-loc input, .thanh-bo-loc select {
@@ -24,6 +32,7 @@
     border-radius: var(--bo-goc);
     font-size: 15px;
     background-color: var(--mau-trang);
+    box-sizing: border-box;
 }
 
 .thanh-bo-loc input { 
@@ -37,6 +46,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Chia thanh 4 cot deu nhau tren may tinh */
     gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .the-san-pham-td {
@@ -49,6 +60,7 @@
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
 }
 
 .the-san-pham-td:hover {
@@ -59,7 +71,7 @@
 .the-san-pham-td img {
     width: 100%;
     height: 180px; /* Co dinh chieu cao anh de khong bi bop meo */
-    object-fit: cover; /* Cat anh vua khôn khung hinh */
+    object-fit: cover; /* Cat anh vua khung hinh */
     border-radius: var(--bo-goc);
     margin-bottom: 12px;
     background-color: var(--mau-kem-sua);
@@ -91,13 +103,14 @@
     text-align: center;
     font-weight: 600;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .the-san-pham-td .nut-bam:hover {
     background-color: var(--mau-nau-dam);
 }
 
-/* Thiet ket dap ung (Responsive) cho man hinh nho */
+/* Thiet ke dap ung (Responsive) cho man hinh nho */
 @media (max-width: 992px) {
     #danh-sach-san-pham-thuc-don {
         grid-template-columns: repeat(2, 1fr); /* May tinh bang: 2 cot */

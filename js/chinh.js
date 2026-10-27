@@ -4,16 +4,22 @@
 // });
 
 // Bước 1: Tạo một hàm xử lý khi trang web tải xong
+// js/chinh.js - Xử lý chung cho toàn bộ website MILO TEA
+
 function khiTrangWebTaiXong() {
     capNhatSoLuongGioHangHeader();
 }
-// Bước 2: Dặn trình duyệt khi "DOMContentLoaded" thì gọi hàm trên
+
+// Gọi hàm khi trang web tải xong DOM
 document.addEventListener("DOMContentLoaded", khiTrangWebTaiXong);
 
 function capNhatSoLuongGioHangHeader() {
-    const gioHang = layGioHang();
+    // Lấy dữ liệu từ luu-tru.js (nếu chưa có hàm layGioHang thì dùng mảng rỗng)
+    const gioHang = typeof layGioHang === 'function' ? layGioHang() : [];
+    
+    // Tính tổng số lượng tất cả món trong giỏ
     const tongSoLuong = gioHang.reduce(function(tong, sanPham) {
-        return tong + sanPham.soLuong;
+        return tong + Number(sanPham.soLuong || 1);
     }, 0);
     
     const phanTuSoLuong = document.getElementById("so-luong-gio-hang");
@@ -22,6 +28,7 @@ function capNhatSoLuongGioHangHeader() {
     }
 }
 
+// Hàm hiển thị thông báo Popup Toast
 function hienThongBao(noiDung) {
     let popup = document.getElementById("thong-bao-popup");
     if (!popup) {

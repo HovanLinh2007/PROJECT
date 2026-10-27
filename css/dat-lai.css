@@ -10,6 +10,7 @@ body {
     color: #333333;
     background-color: #faf9f6;
     line-height: 1.6;
+    overflow-y: scroll;
 }
 
 ul, ol {
