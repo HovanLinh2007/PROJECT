@@ -1,114 +1,214 @@
+/* css/pages/theo-doi-don-hang.css */
 
-/* Nền và khu vực chính */
 .tracking-page {
-    background-color: var(--mau-trang);
-    min-height: 520px;
-    padding: 36px 20px 60px;
+    max-width: var(--chieu-rong-toi-da, 1200px);
+    margin: 30px auto;
+    padding: 0 15px;
+    min-height: 550px;
 }
 
-/* Tiêu đề */
 .tracking-intro {
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .tracking-intro h1 {
-    font-size: 24px;
-    color: #28190f;
-    margin-bottom: 8px;
+    color: var(--mau-nau-dam, #4a2c11);
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 .tracking-intro p {
-    font-size: 13px;
-    color: #68738a;
-    margin: 0;
+    color: #666;
+    font-size: 15px;
 }
 
-/* Khung trắng bao quanh form */
+/* Form Tra cứu */
 .tracking-container {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 22px;
-    background-color: #ffffff;
-    border: 1px solid #f0e9df;
-    border-radius: 22px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    padding: 25px;
+    border-radius: var(--bo-goc, 12px);
+    box-shadow: var(--bong-do, 0 4px 12px rgba(0, 0, 0, 0.08));
+    max-width: 700px;
+    margin: 0 auto 25px;
 }
 
-/* Hai ô nhập và nút nằm cùng hàng */
 .tracking-form {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-/* Ô nhập thông tin */
 .tracking-form input {
     flex: 1;
-    min-width: 0;
-    height: 36px;
-    padding: 0 14px;
-    border: 1px solid #dde1e8;
-    border-radius: 12px;
+    min-width: 200px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     outline: none;
-    font-size: 12px;
-    color: #28190f;
-    background-color: #ffffff;
+    font-size: 14px;
 }
 
-/* Màu khi nhấn vào ô nhập */
 .tracking-form input:focus {
-    border-color: #925b28;
-    box-shadow: 0 0 0 2px rgba(146, 91, 40, 0.1);
+    border-color: var(--mau-nau-dam, #4a2c11);
 }
 
-/* Chữ gợi ý trong ô nhập */
-.tracking-form input::placeholder {
-    color: #9099a9;
-}
-
-/* Nút tra cứu */
 .tracking-form button {
-    height: 36px;
-    padding: 0 22px;
-    border: none;
-    border-radius: 12px;
-    background-color: #925b28;
+    padding: 12px 24px;
+    background: var(--mau-nau-dam, #4a2c11);
     color: #ffffff;
-    font-size: 12px;
+    border: none;
+    border-radius: 8px;
     font-weight: bold;
-    white-space: nowrap;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* Hiệu ứng khi rê chuột */
 .tracking-form button:hover {
-    background-color: #75451d;
+    background: var(--mau-nau-tra-sua, #8c5a2b);
 }
 
-/* Hiển thị tốt trên điện thoại */
-@media (max-width: 600px) {
-    .tracking-page {
-        padding: 28px 16px 40px;
-    }
+.tracking-message {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
 
-    .tracking-intro h1 {
-        font-size: 21px;
-    }
+/* Khung hiển thị kết quả */
+.order-result {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: var(--bo-goc, 12px);
+    box-shadow: var(--bong-do, 0 4px 12px rgba(0, 0, 0, 0.08));
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-    .tracking-container {
-        padding: 16px;
-    }
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
 
-    .tracking-form {
+.label-ma-don {
+    font-size: 13px;
+    color: #888;
+}
+
+.order-header h2 {
+    color: var(--mau-nau-dam, #4a2c11);
+    font-size: 24px;
+    margin: 3px 0;
+}
+
+.ngay-dat-don {
+    font-size: 13px;
+    color: #666;
+}
+
+.order-status {
+    background: #eef9f1;
+    color: #27ae60;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid #abebc6;
+}
+
+/* Progress bar */
+.order-progress {
+    margin-bottom: 25px;
+    background: #fdf8f2;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.order-progress h3 {
+    font-size: 16px;
+    color: var(--mau-nau-dam, #4a2c11);
+    margin-bottom: 15px;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    padding: 10px 5px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    color: #888;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.progress-step.active {
+    background: var(--mau-nau-dam, #4a2c11);
+    color: #ffffff;
+    border-color: var(--mau-nau-dam, #4a2c11);
+}
+
+/* Chi tiết đơn hàng */
+.order-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.delivery-info, .ordered-items {
+    background: #fafafa;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+}
+
+.delivery-info h3, .ordered-items h3 {
+    font-size: 16px;
+    color: var(--mau-nau-dam, #4a2c11);
+    margin-bottom: 12px;
+}
+
+.delivery-info p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.danh-sach-mon-tra-cuu {
+    margin-bottom: 15px;
+}
+
+.dong-mon-tc {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding-top: 10px;
+    color: var(--mau-nau-dam, #4a2c11);
+}
+
+@media (max-width: 768px) {
+    .order-details {
+        grid-template-columns: 1fr;
+    }
+    .progress-steps {
         flex-direction: column;
-        align-items: stretch;
-    }
-
-    .tracking-form input,
-    .tracking-form button {
-        width: 100%;
-        height: 42px;
-        box-sizing: border-box;
     }
 }
