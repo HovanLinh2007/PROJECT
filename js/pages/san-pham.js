@@ -1,7 +1,7 @@
 // thuc-don.js
-document.addEventListener("DOMContentLoaded", function() {
-    hienThiThucDon(layDanhSachSanPham());
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//     hienThiThucDon(layDanhSachSanPham());
+// });
 
 // }
 function hienThiThucDon(danhSach) {
@@ -33,23 +33,66 @@ function hienThiThucDon(danhSach) {
     khung.innerHTML = html;
 }
 
+// thuc-don.js
+
+// Từ khóa ĐÃ ĐƯỢC ÁP DỤNG (chỉ đổi khi người dùng nhấn Enter)
+let tuKhoaDaApDung = "";
+
+document.addEventListener("DOMContentLoaded", function () {
+    hienThiThucDon(layDanhSachSanPham());
+
+    const oTimKiem = document.getElementById("o-tim-kiem");
+
+    // Nhấn Enter mới tìm
+    oTimKiem.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();                 // không để trình duyệt tải lại trang
+            tuKhoaDaApDung = oTimKiem.value;    // chốt từ khóa
+            xuLyBoLoc();
+        }
+    });
+
+    // Xóa sạch chữ trong ô thì trả lại danh sách đầy đủ (có thể bỏ khối này nếu không muốn)
+    oTimKiem.addEventListener("input", function () {
+        if (oTimKiem.value === "" && tuKhoaDaApDung !== "") {
+            tuKhoaDaApDung = "";
+            xuLyBoLoc();
+        }
+    });
+});
+
+/* ===== Bỏ dấu tiếng Việt: "Trà Sữa Đào" -> "tra sua dao" ===== */
+function boDauTiengViet(chuoi) {
+    return String(chuoi || "")
+        .normalize("NFD")                    // tách "à" thành "a" + dấu huyền
+        .replace(/[\u0300-\u036f]/g, "")     // xóa các dấu vừa tách
+        .replace(/đ/g, "d").replace(/Đ/g, "D")   // "đ" không tách được nên xử lý riêng
+        .toLowerCase()
+        .replace(/\s+/g, " ")                // nhiều dấu cách -> 1 dấu cách
+        .trim();
+}
+
 function xuLyBoLoc() {
-    let danhSach = layDanhSachSanPham();
-    const tuKhoa = document.getElementById("o-tim-kiem").value.toLowerCase().trim();
+    let danhSach = [...layDanhSachSanPham()];   // sao chép mảng để sort không làm đổi dữ liệu gốc
     const danhMuc = document.getElementById("loc-danh-muc").value;
     const sapXep = document.getElementById("sap-xep-gia").value;
 
-    // Loc theo tu khoa
+    // Lọc theo từ khóa đã chốt (KHÔNG đọc trực tiếp từ ô đang gõ)
+    const tuKhoa = boDauTiengViet(tuKhoaDaApDung);
     if (tuKhoa !== "") {
-        danhSach = danhSach.filter(sp => sp.tenSanPham.toLowerCase().includes(tuKhoa));
+        const cacTu = tuKhoa.split(" ");     // "tra dao" -> ["tra", "dao"]
+        danhSach = danhSach.filter(function (sp) {
+            const ten = boDauTiengViet(sp.tenSanPham);
+            return cacTu.every(function (tu) { return ten.includes(tu); });
+        });
     }
 
-    // Loc theo danh muc
+    // Lọc theo danh mục
     if (danhMuc !== "tat-ca") {
         danhSach = danhSach.filter(sp => sp.danhMuc === danhMuc);
     }
 
-    // Sap xep gia
+    // Sắp xếp giá
     if (sapXep === "tang-dan") {
         danhSach.sort((a, b) => a.giaSizeM - b.giaSizeM);
     } else if (sapXep === "giam-dan") {
@@ -58,6 +101,32 @@ function xuLyBoLoc() {
 
     hienThiThucDon(danhSach);
 }
+
+// function xuLyBoLoc() {
+//     let danhSach = layDanhSachSanPham();
+//     const tuKhoa = document.getElementById("o-tim-kiem").value.toLowerCase().trim();
+//     const danhMuc = document.getElementById("loc-danh-muc").value;
+//     const sapXep = document.getElementById("sap-xep-gia").value;
+
+//     // Loc theo tu khoa
+//     if (tuKhoa !== "") {
+//         danhSach = danhSach.filter(sp => sp.tenSanPham.toLowerCase().includes(tuKhoa));
+//     }
+
+//     // Loc theo danh muc
+//     if (danhMuc !== "tat-ca") {
+//         danhSach = danhSach.filter(sp => sp.danhMuc === danhMuc);
+//     }
+
+//     // Sap xep gia
+//     if (sapXep === "tang-dan") {
+//         danhSach.sort((a, b) => a.giaSizeM - b.giaSizeM);
+//     } else if (sapXep === "giam-dan") {
+//         danhSach.sort((a, b) => b.giaSizeM - a.giaSizeM);
+//     }
+
+//     hienThiThucDon(danhSach);
+// }
 
 
 // Code chi tiet san pham --Linh
