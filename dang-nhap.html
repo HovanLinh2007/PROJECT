@@ -26,14 +26,30 @@
                 <li><a href="lien-he.html">Liên hệ</a></li>
                 <li><a href="theo-don-don-hang1.html">Tra cứu đơn</a></li>
             </ul>
-            <div class="khu-vuc-tai-khoan-gio-hang">
+            <!-- <div class="khu-vuc-tai-khoan-gio-hang">
                 <a href="gio-hang.html" class="nut-gio-hang-head">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
                 </a>
                 <a href="dang-nhap.html" class="nut-hotline active">Đăng nhập</a>
             </div>
-        </div>
+        </div> -->
+
+            <div class="khu-vuc-tai-khoan-gio-hang">
+                <a href="gio-hang.html" class="nut-gio-hang-head">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
+                </a>
+
+                <!-- Khi chưa đăng nhập -->
+                <a href="dang-nhap.html" id="the-dang-nhap" class="nut-hotline">Đăng nhập</a>
+
+                <!-- Khi ĐÃ đăng nhập (mặc định ẩn đi) -->
+                <div id="the-user-info" class="khu-vuc-user an-form">
+                    <span id="ten-nguoi-dung">Xin chào, </span>
+                    <button type="button" id="nut-dang-xuat" class="nut-logout">Đăng xuất</button>
+                </div>
+            </div>
     </header>
 
     <!-- Noi dung chinh -->

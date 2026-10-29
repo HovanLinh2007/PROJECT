@@ -1,16 +1,12 @@
-
-/* 1. Căn giữa phần main ra trung tâm màn hình */
 .noi-dung-chinh {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 180px);
-    /* ĐÃ SỬA: Dùng đúng biến --mau-kem-sua từ co-so.css */
     background-color: var(--mau-kem-sua); 
     padding: 40px 20px;
 }
 
-/* 2. Hộp chứa form trắng */
 .hop-chua {
     background-color: var(--mau-trang);
     width: 100%;
@@ -20,7 +16,6 @@
     box-shadow: var(--bong-do);
 }
 
-/* 3. Thanh Tab nút bấm */
 .cac-tab {
     display: flex;
     border-bottom: 2px solid #f0e6d8;
@@ -34,7 +29,7 @@
     border: none;
     font-size: 16px;
     font-weight: 600;
-    color: var(--mau-phu); /* ĐÃ SỬA: Dùng biến màu phụ #777777 */
+    color: var(--mau-phu); 
     cursor: pointer;
     border-bottom: 3px solid transparent;
     margin-bottom: -2px;
@@ -46,30 +41,26 @@
     border-bottom-color: var(--mau-nau-tra-sua);
 }
 
-/* 4. Khung chứa các dòng nhập */
 .khung-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-/* Class dùng để ẩn form đăng ký ban đầu */
+
 .an-form {
     display: none !important;
 }
-
-/* 5. Định dạng ô nhập liệu (Input) */
 .hang-nhap {
     display: flex;
     flex-direction: column;
     gap: 6px;
     text-align: left;
 }
-
 .hang-nhap label {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mau-chu); /* ĐÃ SỬA: Dùng biến --mau-chu từ co-so.css */
+    color: var(--mau-chu); 
 }
 
 .hang-nhap input {
@@ -86,9 +77,28 @@
     border-color: var(--mau-nau-tra-sua);
 }
 
-
 .khung-form .nut-bam {
     width: 100%;
     margin-top: 8px;
-    padding: 12px; /* Đệm nút rộng hơn chút cho dễ bấm */
+    padding: 12px;
+}
+
+.khu-vuc-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#ten-nguoi-dung {
+    font-weight: 600;
+    color: var(--mau-nau-tra-sua); /* Dùng biến màu sẵn có trong CSS của bạn */
+}
+
+.nut-logout {
+    background-color: var(--mau-nau-tra-sua);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--bo-goc);
+    cursor: pointer;
 }
