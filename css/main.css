@@ -10,9 +10,10 @@
 @import url('./pages/trang-chu.css');       /* Linh */
 @import url('./pages/san-pham.css');        /* Lê */
 @import url('./pages/chi-tiet.css');        /* Linh */
-@import url('./pages/gio-hang.css');        /* Thuận */
+@import url('./pages/gio-ha11ng.css');        /* Thuận */
 @import url('./pages/thanh-toan.css');      /* Thuận */
 @import url('./pages/theo-doi.css');        /* Lê */
 @import url('./pages/lien-he.css');         /* Tuyết */
 @import url('./pages/quan-ly-sp.css');      /* Tuyết */
 @import url('./pages/dang-nhap.css');       /* Tâm */
+@import url('./pages/gio-hang.css'); 

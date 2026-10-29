@@ -1,23 +1,208 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 2.5vh;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--mau-nau-dam);
+.trang-gio-hang {
+    width: 100%;
+    max-width: var(--chieu-rong-toi-da); /* Dùng đúng biến --chieu-rong-toi-da: 1200px */
+    margin: 0 auto !important;           /* Căn giữa chuẩn */
+    padding: 30px 16px !important;       /* Đồng bộ padding 16px chuẩn từ bo-cuc.css & co-so.css */
+    box-sizing: border-box;
+    min-height: 500px;                  /* Cố định chiều cao tránh sụt khung khi load JS */
+}
+
+/* Tiêu đề trang */
+.trang-gio-hang .tieu-de-trang {
+    text-align: center;
+    color: var(--mau-nau-dam);
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Bảng hiển thị danh sách sản phẩm */
+.bang-gio-hang {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--mau-trang);
     box-shadow: var(--bong-do);
-    width: 40vw;
-    height: auto;
-    padding: 2vh 2vw 2vh 2vw;
-    margin: 0 auto;
-    background-color: var(--mau-trang);
+    border-radius: var(--bo-goc);
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+.bang-gio-hang th, 
+.bang-gio-hang td {
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    vertical-align: middle;
+}
+
+.bang-gio-hang th { 
+    background-color: var(--mau-kem-sua); 
+    color: var(--mau-nau-dam); 
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* Ảnh sản phẩm trong bảng */
+.anh-san-pham-gh {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
     border-radius: var(--bo-goc);
 }
 
-.title{
-    font-size: 2rem;
+/* Thông tin sản phẩm */
+.ten-san-pham-gh {
+    font-weight: 600;
+    color: var(--mau-chu);
+    text-align: left;
+}
+
+.topping-kem-theo {
+    font-size: 12px;
+    color: var(--mau-pha);
+    margin-top: 4px;
+}
+
+/* Nút tăng/giảm số lượng */
+.nhom-tang-giam {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #dddddd;
+    border-radius: var(--bo-goc);
+    overflow: hidden;
+}
+
+.nut-tang-giam {
+    width: 32px;
+    height: 32px;
+    background: var(--mau-kem-sua);
+    border: none;
+    cursor: pointer;
     font-weight: bold;
     color: var(--mau-nau-dam);
-    margin: 1.875rem 0; 
-    margin: 1vh 3vw;
+    transition: background-color 0.3s ease;
+}
+
+.nut-tang-giam:hover {
+    background: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+}
+
+.so-luong-gh {
+    width: 38px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--mau-chu);
+}
+
+/* Nút xóa sản phẩm */
+.nut-xoa-mon {
+    color: #e74c3c;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.nut-xoa-mon:hover {
+    color: #c0392b;
+}
+
+/* Khung tổng kết & Thanh toán */
+.tong-ket-gio-hang {
+    margin-top: 25px;
+    text-align: right;
+    background: var(--mau-trang);
+    padding: 25px;
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+    box-sizing: border-box;
+}
+
+.tong-ket-gio-hang .dong-tong-tien {
+    font-size: 18px;
+    color: var(--mau-chu);
+    margin-bottom: 15px;
+}
+
+.tong-ket-gio-hang .gia-tri-tong {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--mau-nau-dam);
+    margin-left: 10px;
+}
+
+/* Nhóm nút bấm chuyển hướng */
+.nhom-nut-gio-hang {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Nút tiếp tục mua sắm sử dụng màu phụ */
+.nut-tiep-tuc-mua {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--mau-kem-sua);
+    color: var(--mau-nau-dam);
+    text-decoration: none;
+    border-radius: var(--bo-goc);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.nut-tiep-tuc-mua:hover {
+    background: #e6dacb;
+}
+
+/* Nút thanh toán chuẩn nút bấm chính */
+.nut-thanh-toan {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
+    text-decoration: none;
+    border-radius: var(--bo-goc);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.nut-thanh-toan:hover {
+    background: var(--mau-nau-dam);
+}
+
+/* Responsive mượt mà trên Điện thoại & Tablet */
+@media (max-width: 768px) {
+    .trang-gio-hang {
+        padding: 15px 12px !important;
+    }
+    
+    .bang-gio-hang {
+        display: block;
+        overflow-x: auto; /* Thêm cuộn ngang mượt nếu bảng rộng hơn màn hình điện thoại */
+    }
+
+    .nhom-nut-gio-hang {
+        flex-direction: column;
+    }
+
+    .nut-tiep-tuc-mua, 
+    .nut-thanh-toan {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+/* Styling cho ô tích chọn sản phẩm */
+.bang-gio-hang input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--mau-nau-dam); /* Tự chuyển màu tích chọn sang màu nâu thương hiệu */
 }

@@ -1,0 +1,31 @@
+/* thanh-toan.css */
+.trang-thanh-toan { padding: 40px 16px; }
+.trang-thanh-toan h1 { text-align: center; color: var(--mau-nau-dam); margin-bottom: 30px; }
+
+.khung-thanh-toan {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+}
+
+.cot-bieu-mau, .cot-tom-tat {
+    background: var(--mau-trang);
+    padding: 25px;
+    border-radius: var(--bo-goc);
+    box-shadow: var(--bong-do);
+}
+
+.nhom-input { margin-bottom: 15px; }
+.nhom-input label { display: block; font-weight: 600; margin-bottom: 5px; }
+.nhom-input input, .nhom-input textarea, .nhom-input select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--bo-goc);
+}
+
+.nut-dat-hang-ngay { width: 100%; padding: 12px; font-size: 16px; margin-top: 10px; text-align: center; }
+
+@media (max-width: 768px) {
+    .khung-thanh-toan { grid-template-columns: 1fr; }
+}
