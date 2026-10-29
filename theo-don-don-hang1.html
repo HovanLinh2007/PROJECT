@@ -9,13 +9,13 @@
     <!-- Link Font Awesome Icon từ CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Nhúng CSS dùng chung và CSS trang Tra cứu -->
+    <!-- Nhúng các file CSS đúng chuẩn sơ đồ thư mục -->
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/pages/theo-doi1.css">
+    <link rel="stylesheet" href="./css/pages/theo-doi-don-hang.css">
 </head>
 
 <body>
-    <!-- Header và Thanh điều hướng đồng bộ 100% -->
+    <!-- Header và Thanh điều hướng đồng bộ chuẩn toàn hệ thống -->
     <header>
         <div class="vung-chua thanh-dieu-huong">
             <a href="trang-chu.html" class="logo">
@@ -27,10 +27,10 @@
                 <li><a href="san-pham.html">Sản phẩm</a></li>
                 <li><a href="gioi-thieu.html">Giới thiệu</a></li>
                 <li><a href="lien-he.html">Liên hệ</a></li>
-                <li><a href="theo-don-don-hang1.html" class="active">Tra cứu đơn</a></li>
+                <li><a href="theo-doi-don-hang.html" class="active">Tra cứu đơn</a></li>
             </ul>
             <div class="khu-vuc-tai-khoan-gio-hang">
-                <a href="gio-hang1.html" class="nut-gio-hang-head">
+                <a href="gio-hang.html" class="nut-gio-hang-head">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span id="so-luong-gio-hang" class="badge-gio-hang">0</span>
                 </a>
@@ -39,21 +39,88 @@
         </div>
     </header>
 
-    <main class="vung-chua trang-tra-cuu">
-        <h1 class="tieu-de-trang">Tra Cứu Đơn Hàng</h1>
-        <p class="mo-ta-tra-cuu">Nhập Số điện thoại bạn đã dùng khi đặt hàng để kiểm tra tiến độ giao hàng.</p>
+    <main class="tracking-page vung-chua">
 
-        <!-- Khung tìm kiếm -->
-        <div class="khung-tim-kiem-don">
-            <div class="nhom-input-tim">
-                <i class="fa-solid fa-magnifying-glass icon-tim"></i>
-                <input type="text" id="nhap-sdt-tra-cuu" placeholder="Nhập số điện thoại người nhận (VD: 0901234567)...">
-                <button onclick="traCuuDonHang()" class="nut-tra-cuu">Tra Cứu</button>
+        <!-- Tiêu đề trang -->
+        <section class="tracking-intro">
+            <h1>Theo Dõi Đơn Hàng Realtime</h1>
+            <p>
+                Nhập Mã đơn hàng hoặc Số điện thoại đặt hàng
+                để xem tiến trình chuẩn bị đồ uống từ MILO TEA
+            </p>
+        </section>
+
+        <!-- Khung tra cứu -->
+        <section class="tracking-container">
+            <form class="tracking-form" id="trackingForm" onsubmit="xuLyTraCuu(event)">
+                <input
+                    type="text"
+                    id="orderCode"
+                    placeholder="MÃ ĐƠN HÀNG (VD: MILO123456)"
+                >
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Số điện thoại đặt hàng (VD: 0383496587)"
+                >
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tra Cứu Đơn
+                </button>
+            </form>
+        </section>
+
+        <!-- Nơi hiển thị thông báo kết quả tra cứu -->
+        <div id="trackingResult" class="tracking-message"></div>
+
+        <!-- Khung kết quả tra cứu chi tiết -->
+        <section id="orderResult" class="order-result" hidden>
+
+            <!-- Thông tin chung của đơn hàng -->
+            <div class="order-header">
+                <div>
+                    <p class="label-ma-don">Mã đơn hàng:</p>
+                    <h2 id="resultOrderCode">MILO123456</h2>
+                    <p id="resultOrderDate" class="ngay-dat-don"></p>
+                </div>
+                <span id="resultStatus" class="order-status">Đang chuẩn bị hàng</span>
             </div>
-        </div>
 
-        <!-- Khung hiển thị kết quả -->
-        <div id="ket-qua-tra-cuu"></div>
+            <!-- Tiến trình đơn hàng -->
+            <div class="order-progress">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Tiến Trình Đơn Hàng Realtime:</h3>
+                <div class="progress-steps" id="progressSteps">
+                    <div class="progress-step active" id="step1"><i class="fa-solid fa-receipt"></i> 1. Xác Nhận</div>
+                    <div class="progress-step" id="step2"><i class="fa-solid fa-blender"></i> 2. Pha Chế</div>
+                    <div class="progress-step" id="step3"><i class="fa-solid fa-truck-fast"></i> 3. Đang Giao</div>
+                    <div class="progress-step" id="step4"><i class="fa-solid fa-circle-check"></i> 4. Hoàn Thành</div>
+                </div>
+            </div>
+
+            <!-- Thông tin giao hàng và danh sách món -->
+            <div class="order-details">
+
+                <div class="delivery-info">
+                    <h3><i class="fa-solid fa-user"></i> Thông Tin Giao Hàng:</h3>
+                    <p><strong>Người nhận:</strong> <span id="resultName"></span></p>
+                    <p><strong>Số điện thoại:</strong> <span id="resultPhone"></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="resultAddress"></span></p>
+                    <p><strong>Thanh toán:</strong> <span id="resultPayment"></span></p>
+                    <p><strong>Ghi chú:</strong> <span id="resultNote">Không có</span></p>
+                </div>
+
+                <div class="ordered-items">
+                    <h3><i class="fa-solid fa-mug-hot"></i> Danh Sách Món:</h3>
+                    <div id="resultItems" class="danh-sach-mon-tra-cuu"></div>
+                    <div class="order-total">
+                        <span>Tổng Tiền Đơn Hàng:</span>
+                        <strong id="resultTotal">0 đ</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
 
     <!-- Footer 4 Cột chuẩn hóa -->
@@ -95,7 +162,7 @@
         </div>
     </footer>
 
-    <!-- Nhúng đầy đủ JS -->
+    <!-- Thứ tự nhúng các Script khởi tạo hệ thống -->
     <script src="./js/data/products.js"></script>
     <script src="./js/tien-ich/dinh-dang.js"></script>
     <script src="./js/dich-vu/luu-tru.js"></script>
