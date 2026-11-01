@@ -2,7 +2,6 @@
 // document.addEventListener("DOMContentLoaded", function() {
 //     capNhatSoLuongGioHangHeader();
 // });
-
 // Bước 1: Tạo một hàm xử lý khi trang web tải xong
 // js/chinh.js - Xử lý chung cho toàn bộ website MILO TEA
 
@@ -12,6 +11,7 @@ function khiTrangWebTaiXong() {
 
 // Gọi hàm khi trang web tải xong DOM
 document.addEventListener("DOMContentLoaded", khiTrangWebTaiXong);
+document.addEventListener("siteComponentsLoaded", khiTrangWebTaiXong);
 
 function capNhatSoLuongGioHangHeader() {
     // Lấy dữ liệu từ luu-tru.js (nếu chưa có hàm layGioHang thì dùng mảng rỗng)

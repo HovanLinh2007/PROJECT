@@ -150,6 +150,17 @@
 .lien-he__ket-qua {
     margin-top: 12px;
     font-size: 13px;
+    min-height: 1.4em;
+}
+
+.lien-he__ket-qua--thanh-cong {
+    color: #287a3d;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lien-he__ket-qua--loi {
+    color: #dc2626;
 }
 
 /* Responsive cho màn hình nhỏ */

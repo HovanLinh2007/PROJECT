@@ -1,9 +1,16 @@
 // thuc-don.js
-document.addEventListener("DOMContentLoaded", function() {
-    hienThiThucDon(layDanhSachSanPham());
+document.addEventListener("DOMContentLoaded", async function() {
+    try {
+        await khoiTaoDanhSachSanPham();
+        hienThiThucDon(layDanhSachSanPham());
+    } catch (error) {
+        console.error("Không thể tải dữ liệu sản phẩm:", error);
+        const khung = document.getElementById("danh-sach-san-pham-thuc-don");
+        if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+    }
 });
 
-// }
+
 function hienThiThucDon(danhSach) {
     const khung = document.getElementById("danh-sach-san-pham-thuc-don");
     if (!khung) return;

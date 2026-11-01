@@ -3,7 +3,7 @@
 /* Cố định khung chứa khớp 100% với .vung-chua của Header/Footer */
 .trang-thuc-don { 
     width: 100%;
-    max-width: var(--chieu-rong-toi-da, 1200px);
+    max-width: var(--chieu-rong-toi-da);
     margin: 0 auto !important; /* Căn giữa chuẩn */
     padding: 30px 15px !important; /* Đồng bộ 15px lề ngang với .vung-chua */
     box-sizing: border-box;

@@ -8,7 +8,38 @@
 }
 
 /* 2. HEADER & THANH ĐIỀU HƯỚNG */
-header {
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: 140ms ease-out both trang-cu-di;
+}
+
+::view-transition-new(root) {
+    animation: 220ms ease-out both trang-moi-den;
+}
+
+@keyframes trang-cu-di {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes trang-moi-den {
+    from {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+}
+
+body > header {
     background-color: var(--mau-trang);
     box-shadow: var(--bong-do);
     position: sticky;
@@ -117,6 +148,29 @@ header {
 
 .nut-hotline:hover {
     background-color: var(--mau-nau-dam);
+}
+
+.tai-khoan-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nut-dang-xuat-header {
+    background: transparent;
+    border: 1px solid var(--mau-nau-tra-sua);
+    border-radius: var(--bo-goc);
+    color: var(--mau-nau-tra-sua);
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 7px 12px;
+}
+
+.nut-dang-xuat-header:hover {
+    background-color: var(--mau-nau-tra-sua);
+    color: var(--mau-trang);
 }
 
 /* 3. FOOTER 4 CỘT */

@@ -149,3 +149,32 @@ function xuLyDatHang(event) {
         window.location.href = "trang-chu.html";
     }
 }
+// js/pages/thanh-toan.js - Tự động điền thông tin người dùng đã đăng nhập
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Kiểm tra đăng nhập an toàn
+    const nguoiDung = typeof layNguoiDungHienTai === "function" 
+        ? layNguoiDungHienTai() 
+        : JSON.parse(localStorage.getItem("milo_nguoi_dung_hien_tai"));
+
+    if (!nguoiDung) {
+        alert("Vui lòng đăng nhập để thực hiện thanh toán!");
+        window.location.href = "dang-nhap.html";
+        return;
+    }
+
+    // Tự động điền Họ tên và SĐT/Email từ tài khoản đăng nhập
+    const inputHoTen = document.getElementById("ho-ten");
+    const inputSoDienThoai = document.getElementById("so-dien-thoai");
+
+    if (inputHoTen && nguoiDung.hoTen) {
+        inputHoTen.value = nguoiDung.hoTen;
+    }
+    
+    if (inputSoDienThoai && nguoiDung.taiKhoan) {
+        // Nếu taiKhoan lưu là SĐT thì tự điền
+        inputSoDienThoai.value = nguoiDung.taiKhoan;
+    }
+
+    hienThiTomTatDonHang();
+});

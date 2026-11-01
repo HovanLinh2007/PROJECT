@@ -251,3 +251,22 @@ function xoaMon(index) {
         }
     }
 }
+// js/pages/gio-hang.js - Hàm chuyển sang trang thanh toán
+
+function chuyenSangTrangThanhToan() {
+    // 1. Kiểm tra xem người dùng đã đăng nhập chưa từ luu-tru.js
+    const nguoiDungHienTai = typeof layNguoiDungHienTai === "function" 
+        ? layNguoiDungHienTai() 
+        : JSON.parse(localStorage.getItem("milo_nguoi_dung_hien_tai"));
+
+    // 2. Nếu CHƯA đăng nhập -> Cảnh báo và yêu cầu đăng nhập
+    if (!nguoiDungHienTai) {
+        alert("⚠️ Bạn cần Đăng nhập hoặc Đăng ký tài khoản để tiến hành thanh toán!");
+        // Chuyển hướng sang trang đăng nhập
+        window.location.href = "dang-nhap.html";
+        return;
+    }
+
+    // 3. Nếu ĐÃ đăng nhập -> Cho phép chuyển sang trang thanh toán
+    window.location.href = "thanh-toan.html";
+}

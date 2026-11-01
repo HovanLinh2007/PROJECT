@@ -1,6 +1,13 @@
 // trang-chu.js - Hien thi san pham noi bat tren trang chu
-document.addEventListener("DOMContentLoaded", function() {
-    hienThiSanPhamNoiBat();
+document.addEventListener("DOMContentLoaded", async function() {
+    try {
+        await khoiTaoDanhSachSanPham();
+        hienThiSanPhamNoiBat();
+    } catch (error) {
+        console.error("Không thể tải dữ liệu sản phẩm:", error);
+        const khung = document.getElementById("luoi-san-pham-noi-bat");
+        if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+    }
 });
 
 function hienThiSanPhamNoiBat() {
@@ -25,8 +32,15 @@ function hienThiSanPhamNoiBat() {
     khungHienThi.innerHTML = html;
 }
 // trang-chu.js - Hien thi san pham noi bat tren trang chu
-document.addEventListener("DOMContentLoaded", function() {
-    hienThiSanPhamNoiBat();
+document.addEventListener("DOMContentLoaded", async function() {
+    try {
+        await khoiTaoDanhSachSanPham();
+        hienThiSanPhamNoiBat();
+    } catch (error) {
+        console.error("Không thể tải dữ liệu sản phẩm:", error);
+        const khung = document.getElementById("luoi-san-pham-noi-bat");
+        if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+    }
 });
 
 function hienThiSanPhamNoiBat() {

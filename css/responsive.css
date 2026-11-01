@@ -1,0 +1,370 @@
+html {
+    overflow-x: clip;
+}
+
+body {
+    min-width: 320px;
+    overflow-x: clip;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .vung-chua {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .thanh-dieu-huong {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: auto;
+        min-height: 70px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .logo {
+        gap: 7px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .menu-chinh {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+
+    .menu-chinh a {
+        display: block;
+        padding: 5px 0;
+        font-size: 14px;
+    }
+
+    .khu-vuc-tai-khoan-gio-hang {
+        gap: 8px;
+    }
+
+    .tai-khoan-header {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 6px;
+    }
+
+    .nut-hotline {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .nut-dang-xuat-header {
+        min-height: 40px;
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    .footer-moi {
+        margin-top: 36px;
+        padding-top: 32px;
+    }
+
+    .luoi-footer-4col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 18px;
+        padding-bottom: 28px;
+    }
+
+    .footer-bottom-moi {
+        padding: 14px;
+    }
+
+    .mang-xa-hoi {
+        display: flex;
+        gap: 10px;
+    }
+
+    .hero-section {
+        padding: 36px 0;
+    }
+
+    .hero-cot-trai h1 {
+        font-size: clamp(28px, 7vw, 36px);
+    }
+
+    .khung-banner-km {
+        padding: 28px 20px;
+    }
+
+    .khung-banner-km h2 {
+        font-size: clamp(22px, 5vw, 28px);
+    }
+
+    .trang-gio-hang,
+    .trang-thanh-toan,
+    .tracking-page,
+    .trang-thuc-don {
+        padding-right: 14px !important;
+        padding-left: 14px !important;
+    }
+
+    #danh-sach-gio-hang {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .bang-gio-hang {
+        display: table;
+        width: 100%;
+        min-width: 640px;
+    }
+
+    .tong-ket-gio-hang {
+        padding: 18px;
+        text-align: left;
+    }
+
+    .dong-tong-tien {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    .tong-ket-gio-hang .gia-tri-tong {
+        margin-left: 0;
+    }
+
+    .cot-bieu-mau,
+    .cot-tom-tat,
+    .tracking-container,
+    .order-result {
+        min-width: 0;
+        padding: 18px;
+    }
+
+    .khung-thanh-toan {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .tracking-form {
+        flex-direction: column;
+    }
+
+    .tracking-form input,
+    .tracking-form button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .order-header,
+    .dau-don-hang,
+    .chan-don-hang,
+    .order-total {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .order-details {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .progress-steps {
+        flex-direction: column;
+    }
+
+    .lien-he {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .lien-he__thong-tin,
+    .lien-he__form-container {
+        min-width: 0;
+        padding: 26px 20px;
+    }
+
+    .lien-he__tieu-de {
+        font-size: 26px;
+    }
+
+    .thanh-bo-loc {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .thanh-bo-loc input,
+    .thanh-bo-loc select {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    #danh-sach-san-pham-thuc-don {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .the-san-pham-td {
+        min-width: 0;
+        padding: 10px;
+    }
+
+    .the-san-pham-td img {
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .the-san-pham-td h3 {
+        height: auto;
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .the-san-pham-td .gia {
+        font-size: 15px;
+    }
+
+    .the-san-pham-td .nut-bam {
+        font-size: 13px;
+    }
+
+    .khung-chi-tiet {
+        width: min(100%, 520px);
+    }
+
+    .luoi-nut-bam {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gioi-thieu-the {
+        margin-right: 14px;
+        margin-left: 14px;
+        padding: 28px 20px;
+    }
+
+    .cau-chuyen {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .noi-dung-chinh {
+        min-height: 0;
+        padding: 28px 14px;
+    }
+
+    .hop-chua {
+        padding: 26px 20px;
+    }
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vung-chua {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .logo-text {
+        font-size: 16px;
+    }
+
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .menu-chinh {
+        gap: 4px 12px;
+    }
+
+    .menu-chinh a {
+        font-size: 13px;
+    }
+
+    .khu-vuc-tai-khoan-gio-hang {
+        gap: 5px;
+    }
+
+    .nut-hotline,
+    .nut-dang-xuat-header {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    .luoi-footer-4col {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .footer-bottom-moi {
+        font-size: 12px;
+    }
+
+    .hero-section {
+        padding: 28px 0;
+    }
+
+    .nhom-nut-hero {
+        flex-wrap: wrap;
+    }
+
+    .nhom-nut-gio-hang {
+        align-items: stretch;
+    }
+
+    .tracking-intro h1,
+    .tieu-de-trang {
+        font-size: 25px;
+    }
+
+    .order-status {
+        max-width: 100%;
+    }
+
+    #danh-sach-san-pham-thuc-don {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .the-san-pham-td img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .thanh-dat-mon-bottom {
+        align-items: stretch;
+    }
+
+    .gioi-thieu-the {
+        margin-right: 12px;
+        margin-left: 12px;
+        padding: 24px 16px;
+        border-radius: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

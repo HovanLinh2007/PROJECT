@@ -1,7 +1,5 @@
 /* co-so.css - Khai bao bien mau sac va gia tri dung chung */
 :root {
-    /* --mau-nau-tra-sua: #b8860b; */
-    /* Đổi từ #b8860b sang mã màu mới */
     --mau-nau-tra-sua: #d4a373;
     --mau-nau-dam: #8b5a2b;
     --mau-kem-sua: #fdf5e6;
@@ -14,6 +12,9 @@
     --bong-do: 0 4px 6px rgba(0, 0, 0, 0.1);
     --bo-goc: 8px;
     --chieu-rong-toi-da: 1200px;
+    /* Mau nut bam */
+    --mau-nut-bam: #8b4513;
+    --mau-nut-bam-hover: #361b07;
     /* footer */
     --nauf: #2b1f17;
     --kemf: #d1c7bd;

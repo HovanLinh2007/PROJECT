@@ -1,15 +1,15 @@
 /* thanh-phan-chung.css - Nut bam, the san pham, thong bao chung */
 .nut-bam {
-    background-color: var(--mau-nau-tra-sua);
-    color: var(--mau-trang);
+    background-color: var(--mau-nau-dam)!important;
+    color: var(--mau-trang)!important;
     padding: 10px 20px;
     border-radius: var(--bo-goc);
-    font-weight: 600;
+    font-weight: 600 !important;
     transition: background-color 0.3s ease;
 }
 
 .nut-bam:hover {
-    background-color: var(--mau-nau-dam);
+    background-color: var(--mau-nut-bam-hover)!important;
 }
 
 .the-san-pham {
