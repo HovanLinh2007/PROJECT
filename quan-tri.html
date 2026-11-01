@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan - Quản Trị MILO TEA</title>
+    <link rel="stylesheet" href="./css/dat-lai.css">
+    <link rel="stylesheet" href="./css/co-so.css">
+    <link rel="stylesheet" href="./css/pages/quan-tri.css">
+</head>
+<body>
+    <div class="khung-quan-tri">
+        <aside class="thanh-ben">
+            <div class="logo-admin">MILO TEA ADMIN</div>
+            <ul class="menu-admin">
+                <li><a href="quan-tri.html" class="active">Tổng quan</a></li>
+                <li><a href="quan-ly-san-pham.html">Sản phẩm</a></li>
+                <li><a href="quan-ly-don-hang.html">Đơn hàng</a></li>
+                <li><a href="thong-ke-doanh-thu.html">Doanh thu</a></li>
+                <li><a href="quan-ly-gop-y.html" class="active">Góp ý</a></li>
+                <li><a href="#" onclick="dangXuatAdmin()">Đăng xuất</a></li>
+            </ul>
+        </aside>
+        <main class="noi-dung-chinh" id="tong-quan">
+            <header class="header-admin">
+                <h1>Tổng quan hệ thống</h1>
+                <span id="ten-admin-hien-tai">Xin chào, Admin</span>
+            </header>
+
+            <div class="luoi-thong-ke" id="luoi-thong-ke-tong-quan"></div>
+
+            <section class="phan-don-hang-moi" id="don-hang-moi">
+                <div class="tieu-de-don-hang">
+                    <h2>Đơn hàng mới nhất</h2>
+                    <a href="./theo-don-don-hang1.html">Tra cứu đơn hàng</a>
+                </div>
+                <div id="danh-sach-don-moi" aria-live="polite"></div>
+            </section>
+        </main>`
+    </div>
+
+    <script src="./js/tien-ich/dinh-dang.js"></script>
+    <script src="./js/dich-vu/luu-tru.js"></script>
+    <script src="./js/pages/quan-tri.js"></script>
+</body>
+</html>

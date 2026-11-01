@@ -1,0 +1,254 @@
+body {
+    min-height: 100vh;
+    background: #f5f2ec;
+}
+
+.khung-quan-tri {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.thanh-ben {
+    padding: 28px 18px;
+    background: #2b1f17;
+    color: #fff;
+}
+
+.logo-admin {
+    margin: 0 8px 32px;
+    color: #f2c99e;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.menu-admin {
+    display: grid;
+    gap: 8px;
+}
+
+.menu-admin a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #f5eee7;
+    transition: background-color 160ms ease;
+}
+
+.menu-admin a:hover,
+.menu-admin a.active {
+    background: #533b2a;
+    color: #fff;
+}
+
+.noi-dung-chinh {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 36px clamp(18px, 4vw, 56px);
+}
+
+.header-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.header-admin h1 {
+    color: #35251a;
+    font-size: clamp(24px, 3vw, 32px);
+}
+
+#ten-admin-hien-tai {
+    color: #735a47;
+}
+
+.luoi-thong-ke {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.the-thong-ke,
+.phan-don-hang-moi {
+    border: 1px solid #eee6dc;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(43, 31, 23, 0.05);
+}
+
+.the-thong-ke {
+    position: relative;
+    min-width: 0;
+    padding: 22px;
+}
+
+.bieu-tuong-thong-ke {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 16px;
+    place-items: center;
+    border-radius: 12px;
+    background: #fbf1e5;
+    font-size: 21px;
+}
+
+.nhan-thong-ke,
+.mo-ta-thong-ke {
+    color: #76695f;
+    font-size: 14px;
+}
+
+.gia-tri-thong-ke {
+    display: block;
+    margin: 5px 0;
+    color: #35251a;
+    font-size: clamp(20px, 2vw, 28px);
+    overflow-wrap: anywhere;
+}
+
+.phan-don-hang-moi {
+    overflow: hidden;
+}
+
+.tieu-de-don-hang {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px;
+    border-bottom: 1px solid #eee6dc;
+}
+
+.tieu-de-don-hang h2 {
+    color: #35251a;
+    font-size: 20px;
+}
+
+.tieu-de-don-hang a,
+.lien-ket-don-hang {
+    color: #8b5a2b;
+    font-weight: 700;
+}
+
+.tieu-de-don-hang a:hover,
+.lien-ket-don-hang:hover {
+    color: #583513;
+    text-decoration: underline;
+}
+
+.bang-don-hang {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.bang-don-hang th,
+.bang-don-hang td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #f0ece7;
+    vertical-align: middle;
+}
+
+.bang-don-hang th {
+    background: #fcfaf7;
+    color: #76695f;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.bang-don-hang td {
+    color: #44372e;
+    font-size: 14px;
+}
+
+.bang-don-hang tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.thong-bao-don-hang {
+    padding: 28px 24px;
+    color: #76695f;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .khung-quan-tri {
+        grid-template-columns: 210px minmax(0, 1fr);
+    }
+
+    .luoi-thong-ke {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .phan-don-hang-moi {
+        overflow-x: auto;
+    }
+
+    .bang-don-hang {
+        min-width: 720px;
+    }
+}
+
+@media (max-width: 640px) {
+    .khung-quan-tri {
+        grid-template-columns: minmax(0, 1fr);
+        align-content: start;
+    }
+
+    .thanh-ben {
+        padding: 16px;
+    }
+
+    .logo-admin {
+        margin: 0 4px 12px;
+    }
+
+    .menu-admin {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .menu-admin a {
+        height: 100%;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .noi-dung-chinh {
+        padding: 24px 14px;
+    }
+
+    .header-admin {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .luoi-thong-ke {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .the-thong-ke {
+        padding: 16px;
+    }
+
+    .tieu-de-don-hang {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .luoi-thong-ke {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
