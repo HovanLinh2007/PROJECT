@@ -1,0 +1,79 @@
+.thong-bao-gop-y {
+    padding: 22px;
+    border-radius: 10px;
+    background: #fff;
+    color: #76695f;
+}
+
+.bang-gop-y {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: left;
+}
+
+.bang-gop-y th,
+.bang-gop-y td {
+    padding: 14px;
+    border-bottom: 1px solid #eee6dc;
+    vertical-align: top;
+}
+
+.bang-gop-y th {
+    background: #fcfaf7;
+    color: #76695f;
+    white-space: nowrap;
+}
+
+.bang-gop-y td {
+    color: #44372e;
+}
+
+.bang-gop-y .noi-dung-gop-y {
+    min-width: 220px;
+    max-width: 380px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.trang-thai-gop-y {
+    color: #a45b08;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.trang-thai-gop-y.da-xu-ly {
+    color: #287a3d;
+}
+
+.nut-gop-y {
+    margin: 0 6px 6px 0;
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #8b5a2b;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.nut-gop-y:hover {
+    background: #583513;
+}
+
+.nut-xoa-gop-y {
+    background: #c0392b;
+}
+
+.nut-xoa-gop-y:hover {
+    background: #922b21;
+}
+
+@media (max-width: 900px) {
+    #khung-bang-gop-y {
+        overflow-x: auto;
+    }
+
+    .bang-gop-y {
+        min-width: 850px;
+    }
+}

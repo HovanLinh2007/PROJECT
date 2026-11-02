@@ -41,7 +41,7 @@ function xuLyTraCuu(event) {
 
 // Hàm tìm kiếm và hiển thị đơn hàng từ localStorage
 function timKiemDonHang(maDon, sdt) {
-    const dsDonHang = JSON.parse(localStorage.getItem("danhSachDonHangMILO")) || [];
+    const dsDonHang = JSON.parse(localStorage.getItem(KHOA_DON_HANG)) || [];
     const khungKq = document.getElementById("orderResult");
     const khungThongBao = document.getElementById("trackingResult");
 

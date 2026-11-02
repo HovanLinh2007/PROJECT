@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 });
 
+window.addEventListener("storage", function (event) {
+    if (event.key === KHOA_SAN_PHAM) {
+        try {
+            hienThiThucDon(layDanhSachSanPham());
+        } catch (error) {
+            console.error("Không thể cập nhật danh mục sau khi dữ liệu sản phẩm thay đổi.", error);
+            const khung = document.getElementById("danh-sach-san-pham-thuc-don");
+            if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+        }
+    }
+});
+
 
 function hienThiThucDon(danhSach) {
     const khung = document.getElementById("danh-sach-san-pham-thuc-don");

@@ -1,5 +1,4 @@
-// trang-chu.js - Hien thi san pham noi bat tren trang chu
-document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", async function () {
     try {
         await khoiTaoDanhSachSanPham();
         hienThiSanPhamNoiBat();
@@ -10,36 +9,15 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 });
 
-function hienThiSanPhamNoiBat() {
-    const danhSach = layDanhSachSanPham();
-    // Lay 4 san pham dau tien lam noi bat
-    const sanPhamNoiBat = danhSach.slice(0, 4);
-    const khungHienThi = document.getElementById("luoi-san-pham-noi-bat");
-    
-    if (!khungHienThi) return;
-    
-    let html = "";
-    sanPhamNoiBat.forEach(function(sp) {
-        html += `
-            <div class="the-san-pham-trang-chu">
-                <img src="${sp.hinhAnh}" alt="${sp.tenSanPham}">
-                <h3>${sp.tenSanPham}</h3>
-                <p class="gia-san-pham">${dinhDangTienTe(sp.giaSizeM)}</p>
-                <a href="chi-tiet-san-pham.html?ma=${sp.maSanPham}" class="nut-bam">Xem chi tiết</a>
-            </div>
-        `;
-    });
-    khungHienThi.innerHTML = html;
-}
-// trang-chu.js - Hien thi san pham noi bat tren trang chu
-document.addEventListener("DOMContentLoaded", async function() {
-    try {
-        await khoiTaoDanhSachSanPham();
-        hienThiSanPhamNoiBat();
-    } catch (error) {
-        console.error("Không thể tải dữ liệu sản phẩm:", error);
-        const khung = document.getElementById("luoi-san-pham-noi-bat");
-        if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+window.addEventListener("storage", function (event) {
+    if (event.key === KHOA_SAN_PHAM) {
+        try {
+            hienThiSanPhamNoiBat();
+        } catch (error) {
+            console.error("Không thể cập nhật sản phẩm nổi bật sau khi dữ liệu thay đổi.", error);
+            const khung = document.getElementById("luoi-san-pham-noi-bat");
+            if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+        }
     }
 });
 

@@ -125,9 +125,9 @@ function xuLyDatHang(event) {
         ngayDat: new Date().toLocaleString("vi-VN")
     };
 
-    let dsDonHang = JSON.parse(localStorage.getItem("danhSachDonHangMILO")) || [];
+    let dsDonHang = JSON.parse(localStorage.getItem(KHOA_DON_HANG)) || [];
     dsDonHang.unshift(donHangMoi);
-    localStorage.setItem("danhSachDonHangMILO", JSON.stringify(dsDonHang));
+    localStorage.setItem(KHOA_DON_HANG, JSON.stringify(dsDonHang));
 
     // B. Cập nhật lại Giỏ hàng (chỉ giữ món chưa chọn)
     luuGioHangAnToan(gioHangConLai);
