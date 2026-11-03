@@ -1,8 +1,13 @@
-// thuc-don.js
-document.addEventListener("DOMContentLoaded", async function() {
+// js/pages/san-pham.js - Xử lý Thực đơn, Tìm kiếm & Lọc sản phẩm
+
+// 1. TẢI VÀ HIỂN THỊ DỮ LIỆU BAN ĐẦU
+document.addEventListener("DOMContentLoaded", async function () {
     try {
-        await khoiTaoDanhSachSanPham();
-        hienThiThucDon(layDanhSachSanPham());
+        if (typeof khoiTaoDanhSachSanPham === 'function') {
+            await khoiTaoDanhSachSanPham();
+        }
+        const dsBanDau = typeof layDanhSachSanPham === 'function' ? layDanhSachSanPham() : [];
+        hienThiThucDon(dsBanDau);
     } catch (error) {
         console.error("Không thể tải dữ liệu sản phẩm:", error);
         const khung = document.getElementById("danh-sach-san-pham-thuc-don");
@@ -10,108 +15,104 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 });
 
+// Lắng nghe sự thay đổi của localStorage nếu có chỉnh sửa từ trang khác
 window.addEventListener("storage", function (event) {
-    if (event.key === KHOA_SAN_PHAM) {
+    const khoaSPham = typeof KHOA_SAN_PHAM !== 'undefined' ? KHOA_SAN_PHAM : "KHOA_SAN_PHAM";
+    if (event.key === khoaSPham) {
         try {
-            hienThiThucDon(layDanhSachSanPham());
+            const dsCapNhat = typeof layDanhSachSanPham === 'function' ? layDanhSachSanPham() : [];
+            hienThiThucDon(dsCapNhat);
         } catch (error) {
-            console.error("Không thể cập nhật danh mục sau khi dữ liệu sản phẩm thay đổi.", error);
-            const khung = document.getElementById("danh-sach-san-pham-thuc-don");
-            if (khung) khung.textContent = "Không thể tải danh sách sản phẩm.";
+            console.error("Không thể cập nhật danh mục:", error);
         }
     }
 });
 
+// 2. HÀM CHUYỂN ĐỔI CHỮ CÓ DẤU THÀNH KHÔNG DẤU (Dùng cho Tìm kiếm)
+function xoaDauTiengViet(str) {
+    if (!str) return "";
+    return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "d");
+}
 
+// 3. HÀM HIỂN THỊ DANH SÁCH SẢN PHẨM RA MÀN HÌNH
 function hienThiThucDon(danhSach) {
     const khung = document.getElementById("danh-sach-san-pham-thuc-don");
     if (!khung) return;
 
     if (!danhSach || danhSach.length === 0) {
-        khung.innerHTML = "<p style='grid-column: 1/-1; text-align:center;'>Không tìm thấy sản phẩm nào.</p>";
+        khung.innerHTML = "<p style='grid-column: 1/-1; text-align:center; font-size: 16px; padding: 40px 0; color: #777;'>Không tìm thấy sản phẩm nào phù hợp.</p>";
         return;
     }
 
     const anhMacDinh = "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80";
     let html = "";
-    
-    danhSach.forEach(function(sp) {
-        // Lấy mã sản phẩm an toàn (thử maSanPham trước, nếu không có thì lấy id)
+
+    danhSach.forEach(function (sp) {
         const ma = sp.maSanPham || sp.id;
+        const ten = sp.tenSanPham || sp.ten || "Trà sữa MILO";
         const anh = sp.hinhAnh || sp.hinh || anhMacDinh;
+        const gia = sp.giaSizeM || sp.gia || 30000;
 
         html += `
             <div class="the-san-pham-td">
-                <img src="${anh}" alt="${sp.tenSanPham}" onerror="this.onerror=null; this.src='${anhMacDinh}';">
-                <h3>${sp.tenSanPham}</h3>
-                <p class="gia">${typeof dinhDangTienTe === 'function' ? dinhDangTienTe(sp.giaSizeM || sp.gia) : sp.giaSizeM}</p>
-                <button onclick="moModalChiTiet('${sp.maSanPham || sp.id}')" class="nut-bam">Tùy chọn & Đặt món</button>
-            </div>
-        `;
-    });
-    khung.innerHTML = html;
-}
-
-function xuLyBoLoc() {
-    let danhSach = layDanhSachSanPham();
-    const tuKhoa = document.getElementById("o-tim-kiem").value.toLowerCase().trim();
-    const danhMuc = document.getElementById("loc-danh-muc").value;
-    const sapXep = document.getElementById("sap-xep-gia").value;
-
-    // Loc theo tu khoa
-    if (tuKhoa !== "") {
-        danhSach = danhSach.filter(sp => sp.tenSanPham.toLowerCase().includes(tuKhoa));
-    }
-
-    // Loc theo danh muc
-    if (danhMuc !== "tat-ca") {
-        danhSach = danhSach.filter(sp => sp.danhMuc === danhMuc);
-    }
-
-    // Sap xep gia
-    if (sapXep === "tang-dan") {
-        danhSach.sort((a, b) => a.giaSizeM - b.giaSizeM);
-    } else if (sapXep === "giam-dan") {
-        danhSach.sort((a, b) => b.giaSizeM - a.giaSizeM);
-    }
-
-    hienThiThucDon(danhSach);
-}
-
-
-// Code chi tiet san pham --Linh
-
-// Hàm đóng Popup (chỉ cần xóa nội dung HTML chứ không chuyển trang)
-function dongModal() {
-    const khung = document.getElementById("khung-chi-tiet-san-pham");
-    if (khung) khung.innerHTML = "";
-}
-function hienThiThucDon(danhSach) {
-    const khung = document.getElementById("danh-sach-san-pham-thuc-don");
-    if (!khung) return;
-
-    if (!danhSach || danhSach.length === 0) {
-        khung.innerHTML = "<p style='grid-column: 1/-1; text-align:center;'>Không tìm thấy sản phẩm nào.</p>";
-        return;
-    }
-
-    const anhMacDinh = "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80";
-    let html = "";
-    
-    danhSach.forEach(function(sp) {
-        const ma = sp.maSanPham || sp.id;
-        const anh = sp.hinhAnh || sp.hinh || anhMacDinh;
-
-        html += `
-            <div class="the-san-pham-td">
-                <img src="${anh}" alt="${sp.tenSanPham}" onerror="this.onerror=null; this.src='${anhMacDinh}';">
-                <h3>${sp.tenSanPham}</h3>
-                <p class="gia">${typeof dinhDangTienTe === 'function' ? dinhDangTienTe(sp.giaSizeM || sp.gia) : sp.giaSizeM}</p>
-                
-                <!-- SỬA NÚT BẤM: GỌI HÀM hienThiChiTietModal KHI BẤM KÍCH NÚT -->
+                <img src="${anh}" alt="${ten}" onerror="this.onerror=null; this.src='${anhMacDinh}';">
+                <h3>${ten}</h3>
+                <p class="gia">${typeof dinhDangTienTe === 'function' ? dinhDangTienTe(gia) : gia.toLocaleString('vi-VN') + 'đ'}</p>
                 <button type="button" class="nut-bam" onclick="hienThiChiTietModal('${ma}')">Tùy chọn & Đặt món</button>
             </div>
         `;
     });
     khung.innerHTML = html;
+}
+
+// 4. HÀM LỌC VÀ TÌM KIẾM SẢN PHẨM (Kích hoạt khi gõ vào ô tìm kiếm hoặc đổi select)
+function xuLyBoLoc() {
+    let danhSach = typeof layDanhSachSanPham === 'function' ? layDanhSachSanPham() : [];
+
+    const oTimKiem = document.getElementById("o-tim-kiem");
+    const oLocDanhMuc = document.getElementById("loc-danh-muc");
+    const oSapXepGia = document.getElementById("sap-xep-gia");
+
+    const tuKhoaRaw = oTimKiem ? oTimKiem.value.trim() : "";
+    const tuKhoaKhongDau = xoaDauTiengViet(tuKhoaRaw);
+
+    const danhMuc = oLocDanhMuc ? oLocDanhMuc.value : "tat-ca";
+    const sapXep = oSapXepGia ? oSapXepGia.value : "mac-dinh";
+
+    // Bước 1: Lọc theo từ khóa tìm kiếm (so sánh cả có dấu lẫn không dấu)
+    if (tuKhoaKhongDau !== "") {
+        danhSach = danhSach.filter(function (sp) {
+            const tenGoc = sp.tenSanPham || sp.ten || sp.tenSP || "";
+            const tenKhongDau = xoaDauTiengViet(tenGoc);
+            return tenKhongDau.includes(tuKhoaKhongDau);
+        });
+    }
+
+    // Bước 2: Lọc theo danh mục
+    if (danhMuc !== "tat-ca") {
+        danhSach = danhSach.filter(function (sp) {
+            return sp.danhMuc === danhMuc || sp.category === danhMuc;
+        });
+    }
+
+    // Bước 3: Sắp xếp theo giá
+    if (sapXep === "tang-dan") {
+        danhSach.sort((a, b) => (a.giaSizeM || a.gia) - (b.giaSizeM || b.gia));
+    } else if (sapXep === "giam-dan") {
+        danhSach.sort((a, b) => (b.giaSizeM || b.gia) - (a.giaSizeM || a.gia));
+    }
+
+    // Render lại giao diện danh sách sau khi lọc
+    hienThiThucDon(danhSach);
+}
+
+// 5. HÀM ĐÓNG POPUP MODAL
+function dongModal() {
+    const khung = document.getElementById("khung-chi-tiet-san-pham");
+    if (khung) khung.innerHTML = "";
 }

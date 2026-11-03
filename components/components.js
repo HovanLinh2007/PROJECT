@@ -1,89 +1,84 @@
-(function ($) {
-    if (!$) {
-        console.error("Không thể tải header/footer: jQuery chưa được nạp.");
-        return;
+const componentScriptUrl = document.currentScript.src;
+const components = [
+    {
+        selector: "#site-header",
+        renderedSelector: "body > header",
+        url: new URL("header.html", componentScriptUrl),
+        cacheKey: "milo_component_header"
+    },
+    {
+        selector: "#site-footer",
+        renderedSelector: "body > footer.footer-moi",
+        url: new URL("footer.html", componentScriptUrl),
+        cacheKey: "milo_component_footer"
     }
+];
 
-    const components = [
-        {
-            selector: "#site-header",
-            renderedSelector: "body > header",
-            url: "./components/header.html",
-            cacheKey: "milo_component_header"
-        },
-        {
-            selector: "#site-footer",
-            renderedSelector: "body > footer.footer-moi",
-            url: "./components/footer.html",
-            cacheKey: "milo_component_footer"
-        }
-    ];
+function capNhatGiaoDien() {
+    const trangHienTai = window.location.pathname.split("/").pop() || "trang-chu.html";
 
-    function docCapNhatGiaoDien() {
-        const trangHienTai = window.location.pathname.split("/").pop() || "trang-chu.html";
-
-        $(".menu-chinh a").each(function () {
-            const lienKet = $(this).attr("href");
-            if (
-                lienKet === trangHienTai ||
-                (trangHienTai === "chi-tiet-san-pham.html" && lienKet === "san-pham.html")
-            ) {
-                $(this).addClass("active");
-            }
-        });
-
-        document.dispatchEvent(new Event("siteComponentsLoaded"));
-    }
-
-    components.forEach(function (component) {
-        const viTri = $(component.selector);
-        if (!viTri.length) {
-            return;
-        }
-
-        const htmlDaLuu = localStorage.getItem(component.cacheKey);
-        if (htmlDaLuu) {
-            viTri.replaceWith(htmlDaLuu);
-            component.daHienThiCache = true;
+    document.querySelectorAll(".menu-chinh a").forEach(function (lienKet) {
+        const href = lienKet.getAttribute("href");
+        if (
+            href === trangHienTai ||
+            (trangHienTai === "chi-tiet-san-pham.html" && href === "san-pham.html")
+        ) {
+            lienKet.classList.add("active");
         }
     });
 
-    if (components.some(function (component) { return component.daHienThiCache; })) {
-        docCapNhatGiaoDien();
+    document.dispatchEvent(new Event("siteComponentsLoaded"));
+}
+
+function hienThiComponent(component, html) {
+    const viTri = document.querySelector(component.selector)
+        || document.querySelector(component.renderedSelector);
+
+    if (!viTri) {
+        console.error(`Không tìm thấy vị trí chèn ${component.url.pathname}.`);
+        return false;
     }
 
-    const ketQuaTai = components.map(function (component) {
-        if (!$(component.selector).length && !component.daHienThiCache) {
-            return null;
+    viTri.outerHTML = html;
+    capNhatGiaoDien();
+    return true;
+}
+
+async function taiComponent(component) {
+    let daHienThiCache = false;
+
+    try {
+        const htmlDaLuu = localStorage.getItem(component.cacheKey);
+        if (htmlDaLuu) {
+            daHienThiCache = hienThiComponent(component, htmlDaLuu);
+        }
+    } catch (error) {
+        console.error(`Không thể đọc cache ${component.cacheKey}.`, error);
+    }
+
+    try {
+        const phanHoi = await fetch(component.url);
+        if (!phanHoi.ok) {
+            throw new Error(`HTTP ${phanHoi.status}`);
         }
 
-        return $.get(component.url)
-            .done(function (html) {
-                localStorage.setItem(component.cacheKey, html);
-                const viTri = $(component.selector);
-                if (viTri.length) {
-                    viTri.replaceWith(html);
-                } else if (!component.daHienThiCache) {
-                    console.error(`Không tìm thấy vị trí chèn ${component.url}.`);
-                    return;
-                } else {
-                    $(component.renderedSelector).replaceWith(html);
-                }
-                docCapNhatGiaoDien();
-            })
-            .fail(function (xhr, status, error) {
-                console.error(`Không thể tải ${component.url}.`, status, error);
-                if (!component.daHienThiCache) {
-                    const viTri = $(component.selector);
-                    if (!viTri.length) {
-                        return;
-                    }
-                    viTri.text("Không thể tải nội dung trang.");
-                }
-            });
-    }).filter(Boolean);
+        const html = await phanHoi.text();
+        try {
+            localStorage.setItem(component.cacheKey, html);
+        } catch (error) {
+            console.error(`Không thể lưu cache ${component.cacheKey}.`, error);
+        }
 
-    if (!ketQuaTai.length && !components.some(function (component) { return component.daHienThiCache; })) {
-        docCapNhatGiaoDien();
+        hienThiComponent(component, html);
+    } catch (error) {
+        console.error(`Không thể tải ${component.url.href}.`, error);
+        if (!daHienThiCache) {
+            const viTri = document.querySelector(component.selector);
+            if (viTri) {
+                viTri.textContent = "Không thể tải nội dung trang.";
+            }
+        }
     }
-})(window.jQuery);
+}
+
+Promise.all(components.map(taiComponent));
