@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan - Quản Trị MILO TEA</title>
+    <link rel="stylesheet" href="../css/dat-lai.css">
+    <link rel="stylesheet" href="../css/co-so.css">
+    <link rel="stylesheet" href="../css/pages/quan-tri.css">
+    <link rel="stylesheet" href="../css/pages/thong-ke-doanh-thu.css">
+</head>
+
+<body>
+    <div class="khung-quan-tri">
+        <aside class="thanh-ben">
+            <div class="logo-admin">MILO TEA ADMIN</div>
+            <ul class="menu-admin">
+                <li><a href="quan-tri.html" class="active">Tổng quan</a></li>
+                <li><a href="quan-ly-san-pham.html">Sản phẩm</a></li>
+                <li><a href="quan-ly-don-hang.html">Đơn hàng</a></li>
+                <li><a href="thong-ke-doanh-thu.html">Doanh thu</a></li>
+                <li><a href="quan-ly-gop-y.html" class="active">Góp ý</a></li>
+                <li><a href="#" onclick="dangXuatAdmin()">Đăng xuất</a></li>
+            </ul>
+        </aside>
+        <main class="noi-dung-chinh" id="tong-quan">
+            <header class="header-admin">
+                <h1>Thống kê doanh thu</h1>
+                <span id="ten-admin-hien-tai">Xin chào, Admin</span>
+            </header>
+            <div class="vung-chua-tong">
+                <div class="vung-chua-1">
+                    <section class="the-thong-ke-doanh-thu" id="don-hang-moi">
+                        <div class="tieu-de-tong-doanh-thu">
+                            <h2>Tổng doanh thu sản phẩm theo tháng</h2>
+                        </div>
+                        <div id="danh-sach-don-moi" aria-live="polite"></div>
+                    </section>
+
+                    <section class="the-thong-ke-co-cau" id="don-hang-moi">
+                        <div class="tieu-de-tong-doanh-thu">
+                            <h2>Cơ cấu doanh thu</h2>
+                        </div>
+                        <div id="ty-trong-doanh-thu"></div>
+                    </section>
+                </div>
+                <div class="vung-chua-2">
+                    <section class="the-thong-ke-hieu-suat">
+                        <div class="tieu-de-tong-doanh-thu">
+                            <h2>Thống kê hiệu suất</h2>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/tien-ich/dinh-dang.js"></script>
+    <script src="../js/dich-vu/luu-tru.js"></script>
+    <script src="../js/pages/quan-ly-don-hang.js"></script>
+</body>
+
+</html>
