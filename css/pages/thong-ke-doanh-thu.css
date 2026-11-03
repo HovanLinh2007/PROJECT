@@ -1,0 +1,57 @@
+:root{
+    --mau-vien:#eee6dc;
+    --mau-nen:#fff;
+    --thuoc-tinh-vien: 1px solid var(--mau-vien);
+    --do-bong: 0 8px 24px rgba(43, 31, 23, 0.05);
+    --chieu-cao: auto;
+    --chieu-cao-toi-thieu: 50vh;
+    --dem: 16px;
+}
+
+@import url("../co-so.css");
+
+.tieu-de-tong-doanh-thu{
+    display: flex;
+    padding: 22px 24px;
+    border-bottom: var(--thuoc-tinh-vien);
+}
+
+.vung-chua-tong{
+    display:flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.vung-chua-1{
+    gap: 1rem;
+}
+
+.vung-chua-1, .vung-chua-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.the-thong-ke-doanh-thu, .the-thong-ke-co-cau, .the-thong-ke-hieu-suat {
+    border: var(--thuoc-tinh-vien);
+    border-radius: var(--bo-goc);
+    background: var(--mau-nen);
+    box-shadow: var(--do-bong);
+    position: relative;
+    padding: var(--dem);
+    height: var(--chieu-cao);
+    min-height: var(--chieu-cao-toi-thieu);
+}
+
+.the-thong-ke-doanh-thu{
+    flex: 7 1 0;
+   
+}
+
+.the-thong-ke-co-cau{
+    flex: 3 1 0;
+}
+
+.the-thong-ke-hieu-suat{
+    width: 100%;
+}
