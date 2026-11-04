@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILO TEA - Quản lý sản phẩm</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/pages/quan-ly-san-pham.css">
+</head>
+<body>
+    <div class="khung-quan-tri">
+        <aside class="thanh-ben">
+            <div class="logo-admin">MILO TEA ADMIN</div>
+            <ul class="menu-admin">
+                <li><a href="quan-tri.html">Tổng quan</a></li>
+                
+                <li><a href="quan-ly-don-hang.html">Đơn hàng</a></li>
+                <li><a href="thong-ke-doanh-thu.html">Doanh thu</a></li>
+                <li><a href="quan-ly-gop-y.html">Góp ý</a></li>
+                <li><a href="trang-chu.html">Cửa hàng</a></li>
+                <li><a href="#" onclick="dangXuatAdmin()">Đăng xuất</a></li>
+            </ul>
+        </aside>
+    <main class="trang-admin">
+
+        <header class="dau-trang">
+            <div>
+                <p class="thuong-hieu">MILO TEA ADMIN</p>
+                <h1>Quản lý sản phẩm</h1>
+            </div>
+
+            <span id="so-luong-san-pham">0 sản phẩm</span>
+        </header>
+
+        <!-- Tìm kiếm và lọc -->
+        <section class="thanh-cong-cu">
+
+            <div class="o-tim-kiem">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="tim-kiem-san-pham"
+                    placeholder="Tìm sản phẩm..."
+                >
+            </div>
+
+            <div class="bo-loc">
+                <button class="nut-loc active" data-filter="all">Tất cả</button>
+                <button class="nut-loc" data-filter="tra-sua">Trà sữa</button>
+                <button class="nut-loc" data-filter="tra-trai-cay">Trà trái cây</button>
+                <button class="nut-loc" data-filter="other">Khác</button>
+            </div>
+
+        </section>
+
+        <!-- Danh sách sản phẩm -->
+        <section
+            class="luoi-san-pham-admin"
+            id="danh-sach-san-pham-admin">
+        </section>
+
+    </main>
+
+    <!-- Nút thêm sản phẩm -->
+    <button class="nut-them" id="btn-them-san-pham">
+        <i class="fa-solid fa-plus"></i>
+        Thêm sản phẩm
+    </button>
+
+    <!-- Modal thêm sửa sản phẩm -->
+    <div class="lop-phu-modal" id="modal-san-pham">
+
+        <div class="hop-thoai">
+
+            <div class="dau-modal">
+                <h2 id="tieu-de-modal">Thêm sản phẩm</h2>
+
+                <button type="button" id="btn-dong-modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="form-san-pham">
+
+                <div class="luoi-form">
+
+                    <div class="nhom-truong">
+                        <label>Mã sản phẩm</label>
+                        <input type="text" id="ma-san-pham" required>
+                    </div>
+
+                    <div class="nhom-truong">
+                        <label>Tên sản phẩm</label>
+                        <input type="text" id="ten-san-pham" required>
+                    </div>
+
+                    <div class="nhom-truong">
+                        <label>Danh mục</label>
+                        <select id="danh-muc-san-pham">
+                            <option value="tra-sua">Trà sữa</option>
+                            <option value="tra-trai-cay">Trà trái cây</option>
+                            <option value="tra-nguyen-chat">Trà nguyên chất</option>
+                            <option value="da-xay">Đá xay</option>
+                        </select>
+                    </div>
+
+                    <div class="nhom-truong">
+                        <label>Giá size M</label>
+                        <input type="number" id="gia-san-pham" min="0" required>
+                    </div>
+
+                    <div class="nhom-truong">
+                        <label>Phụ phí size L</label>
+                        <input type="number" id="phu-phi-size-l" min="0">
+                    </div>
+
+                    <div class="nhom-truong">
+                        <label>Đường dẫn ảnh</label>
+                        <input type="url" id="hinh-anh-san-pham">
+                    </div>
+
+                    <div class="nhom-truong full-width">
+                        <label>Mô tả sản phẩm</label>
+                        <textarea id="mo-ta-san-pham" rows="3"></textarea>
+                    </div>
+
+                    <div class="nhom-truong full-width">
+                        <label>Topping (mỗi dòng: tên | giá)</label>
+                        <textarea
+                            id="topping-san-pham"
+                            rows="3"
+                            placeholder="Trân châu đen | 5000">
+                        </textarea>
+                    </div>
+
+                    <label class="checkbox-hang full-width">
+                        <input type="checkbox" id="con-hang-san-pham" checked>
+                        Sản phẩm còn hàng
+                    </label>
+
+                </div>
+
+                <p id="loi-form"></p>
+
+                <div class="nut-modal">
+                    <button type="button" class="nut-huy" id="btn-huy-modal">
+                        Hủy
+                    </button>
+
+                    <button type="submit" class="nut-luu">
+                        Lưu sản phẩm
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="../js/pages/quan-ly-san-pham.js"></script>
+    <script src="../js/tien-ich/dinh-dang.js"></script>
+    <script src="../js/dich-vu/luu-tru.js"></script>
+    <script src="../js/pages/quan-tri.js"></script>
+
+</body>
+</html>
