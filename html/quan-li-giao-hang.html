@@ -9,21 +9,23 @@
 </head>
 <body class="quan-tri">
 
-  <aside class="qt-menu">
-    <div class="qt-menu__logo">MILO TEA ADMIN</div>
-    <nav class="qt-menu__dieu-huong">
-      <a href="quan-tri.html">Tổng quan</a>
-      <a href="quan-ly-san-pham.html">Sản phẩm</a>
-      <a href="quan-li-giao-hang.html" class="dang-chon" aria-current="page">
-        <span>Đơn hàng</span>
-        <span id="badge-menu-don" class="qt-badge" hidden>0</span>
-      </a>
-      <a href="thong-ke-doanh-thu.html">Doanh thu</a>
-      <a href="#">Góp ý</a>       <!-- thay # bằng tên file thật -->
-      <a href="#">Cửa hàng</a>    <!-- thay # bằng tên file thật -->
-      <a href="#" id="nut-dang-xuat">Đăng xuất</a>
-    </nav>
-  </aside>
+  <div class="khung-quan-tri">
+    <aside class="thanh-ben">
+      <div class="logo-admin">MILO TEA ADMIN</div>
+      <ul class="menu-admin">
+        <li><a href="quan-tri.html">Tổng quan</a></li>
+        <li><a href="quan-ly-san-pham.html">Sản phẩm</a></li>
+        <li>
+          <a href="quan-li-giao-hang.html" class="active" aria-current="page">
+            Đơn hàng <span id="badge-menu-don" class="qt-badge" hidden>0</span>
+          </a>
+        </li>
+        <li><a href="thong-ke-doanh-thu.html">Doanh thu</a></li>
+        <li><a href="quan-ly-gop-y.html">Góp ý</a></li>
+        <li><a href="trang-chu.html">Cửa hàng</a></li>
+        <li><a href="#" id="nut-dang-xuat">Đăng xuất</a></li>
+      </ul>
+    </aside>
 
   <main class="qt-noi-dung">
 
@@ -63,7 +65,7 @@
     <section class="khung-the">
       <div class="khung-the__dau">
         <h2>Danh sách đơn hàng</h2>
-        <a href="theo-doi-don-hang.html" target="_blank" rel="noopener" class="lien-ket-nho">Tra cứu đơn hàng</a>
+        <a href="./theo-don-don-hang1.html" target="_blank" rel="noopener" class="lien-ket-nho">Tra cứu đơn hàng</a>
       </div>
 
       <div class="khung-the__than">
@@ -98,6 +100,7 @@
       </div>
     </section>
   </main>
+  </div>
 
   <dialog id="hop-chi-tiet" class="hop-chi-tiet">
     <div id="ct-noi-dung"></div>
