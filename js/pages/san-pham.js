@@ -99,7 +99,6 @@ function xuLyBoLoc() {
             return sp.danhMuc === danhMuc || sp.category === danhMuc;
         });
     }
-
     // Bước 3: Sắp xếp theo giá
     if (sapXep === "tang-dan") {
         danhSach.sort((a, b) => (a.giaSizeM || a.gia) - (b.giaSizeM || b.gia));

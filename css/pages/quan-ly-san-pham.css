@@ -1,0 +1,401 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f8f6f3;
+    color: #302326;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.khung-quan-tri {
+    min-height: 100vh;
+}
+
+/* KHU VỰC NỘI DUNG */
+
+.trang-admin {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 36px clamp(18px, 4vw, 56px) 100px;
+    background: white;
+    border-radius: 18px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Tiêu đề */
+.dau-trang {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 25px;
+}
+
+.thuong-hieu {
+    color: #a77e78;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.dau-trang h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+}
+
+#so-luong-san-pham {
+    color: #898080;
+    font-size: 13px;
+}
+
+/* Thanh tìm kiếm */
+.thanh-cong-cu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.o-tim-kiem {
+    width: 300px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid #e9e5e2;
+    border-radius: 12px;
+    color: #999;
+}
+
+.o-tim-kiem input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+/* Bộ lọc */
+.bo-loc {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.nut-loc {
+    padding: 10px 17px;
+    border: 1px solid #e9e5e2;
+    border-radius: 25px;
+    background: white;
+    color: #817675;
+    font-size: 12px;
+}
+
+.nut-loc.active {
+    background: #54172b;
+    color: white;
+    border-color: #54172b;
+}
+
+/* Danh sách sản phẩm */
+.luoi-san-pham-admin {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+/* Thẻ sản phẩm */
+.the-san-pham-admin {
+    padding: 13px;
+    border: 1px solid #eeeae7;
+    border-radius: 17px;
+    background: white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
+    transition: 0.2s;
+}
+
+.the-san-pham-admin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+}
+
+.thong-tin-the {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 92px;
+}
+
+/* Ảnh sản phẩm */
+.anh-san-pham-admin {
+    display: block;
+    flex: 0 0 92px;
+    width: 92px;
+    height: 92px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f3efec;
+}
+
+.noi-dung-san-pham-admin {
+    flex: 1;
+    min-width: 0;
+}
+
+.danh-muc-admin {
+    color: #b17d78;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.ten-san-pham-admin {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+}
+
+.gia-san-pham-admin {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.trang-thai-san-pham {
+    color: #8c9990;
+    font-size: 10px;
+}
+
+.trang-thai-san-pham::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #78a88b;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.trang-thai-san-pham.het-hang {
+    color: #b77a72;
+}
+
+.trang-thai-san-pham.het-hang::before {
+    background: #c67c72;
+}
+
+/* Nút sửa xóa */
+.hanh-dong-san-pham {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding-top: 10px;
+    margin-top: 12px;
+    border-top: 1px solid #f0eeec;
+}
+
+.hanh-dong-san-pham button {
+    min-height: 32px;
+    border: none;
+    border-radius: 7px;
+    background: #f6f3f0;
+    color: #786c68;
+    font-size: 11px;
+}
+
+.hanh-dong-san-pham .btn-xoa-san-pham {
+    color: #b17b76;
+}
+
+/* Không có sản phẩm */
+.khong-co-san-pham {
+    grid-column: 1 / -1;
+    padding: 50px 15px;
+    text-align: center;
+    color: #938986;
+}
+
+/* Nút thêm sản phẩm */
+.nut-them {
+    position: fixed;
+    right: 25px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #54172b;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 7px 22px rgba(84, 23, 43, 0.2);
+}
+
+/* Modal */
+.lop-phu-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    background: rgba(31, 22, 24, 0.48);
+}
+
+.lop-phu-modal.dang-mo {
+    display: flex;
+}
+
+.hop-thoai {
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    background: white;
+    border-radius: 18px;
+}
+
+.dau-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.dau-modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+#btn-dong-modal {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #f5f1ee;
+}
+
+/* Form */
+.luoi-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.nhom-truong {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.nhom-truong input,
+.nhom-truong select,
+.nhom-truong textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #e8e2df;
+    border-radius: 9px;
+    outline: none;
+    font-size: 13px;
+}
+
+.nhom-truong input:focus,
+.nhom-truong select:focus,
+.nhom-truong textarea:focus {
+    border-color: #a77e78;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.checkbox-hang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+#loi-form {
+    color: #b34c4c;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.nut-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nut-modal button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 9px;
+}
+
+.nut-huy {
+    background: #f3efec;
+}
+
+.nut-luu {
+    background: #54172b;
+    color: white;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+    .luoi-san-pham-admin {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    .thanh-cong-cu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .o-tim-kiem {
+        width: 100%;
+    }
+
+    .luoi-san-pham-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .luoi-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+}

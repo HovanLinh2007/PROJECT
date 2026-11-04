@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("phone").value = sdtTuUrl;
         timKiemDonHang("", sdtTuUrl);
     } else if (maDonTuUrl) {
-        document.getElementById("orderCode").value = maDonTuUrl;
         timKiemDonHang(maDonTuUrl, "");
     }
 
@@ -33,36 +32,41 @@ function fmTien(so) {
 function xuLyTraCuu(event) {
     event.preventDefault();
 
-    const maDonInput = document.getElementById("orderCode").value.trim().toUpperCase();
     const sdtInput = document.getElementById("phone").value.trim();
-
-    if (!maDonInput && !sdtInput) {
-        hienThiThongBao("Vui lòng nhập Mã đơn hàng hoặc Số điện thoại để tra cứu!", "orange");
+    if (!sdtInput) {
+        hienThiThongBao("Vui lòng nhập số điện thoại đặt hàng để tra cứu!", "orange");
         return;
     }
 
-    timKiemDonHang(maDonInput, sdtInput);
+    timKiemDonHang("", sdtInput);
 }
 
 function timKiemDonHang(maDon, sdt) {
     const danhSach = TrangThaiDon.docTatCa();
-    const maChuanHoa = maDon.toUpperCase();
+    const maChuanHoa = String(maDon || "").trim().toUpperCase();
     const donHang = danhSach.find(function (don) {
         const thongTin = TrangThaiDon.thongTin(don);
-        const hopLeMa = maDon ? thongTin.ma.toUpperCase() === maChuanHoa : true;
-        const hopLeSdt = sdt ? thongTin.sdt.includes(sdt) : true;
-        return maDon && sdt ? hopLeMa || hopLeSdt : hopLeMa && hopLeSdt;
+        const hopLeMa = maChuanHoa
+            ? thongTin.ma.toUpperCase() === maChuanHoa
+            : true;
+        const hopLeSdt = sdt
+            ? thongTin.sdt.includes(sdt.trim())
+            : true;
+
+        return maChuanHoa && sdt
+            ? hopLeMa || hopLeSdt
+            : hopLeMa && hopLeSdt;
     });
 
     if (!donHang) {
         maDonDangTheoDoi = "";
+        document.getElementById("orderResult").hidden = true;
         hienThiThongBao(
             danhSach.length
                 ? "❌ Không tìm thấy đơn hàng trùng khớp! Vui lòng kiểm tra lại thông tin."
                 : "Chưa có dữ liệu đơn hàng nào trên hệ thống!",
             "#e74c3c"
         );
-        document.getElementById("orderResult").hidden = true;
         return;
     }
 
@@ -77,11 +81,12 @@ function capNhatDonDangTheoDoi() {
 
     if (donHang) {
         hienThiDonHang(donHang);
-    } else {
-        maDonDangTheoDoi = "";
-        document.getElementById("orderResult").hidden = true;
-        hienThiThongBao("Không tìm thấy đơn hàng này trong dữ liệu hiện tại.", "#e74c3c");
+        return;
     }
+
+    maDonDangTheoDoi = "";
+    document.getElementById("orderResult").hidden = true;
+    hienThiThongBao("Không tìm thấy đơn hàng này trong dữ liệu hiện tại.", "#e74c3c");
 }
 
 function hienThiDonHang(donHang) {
@@ -91,7 +96,8 @@ function hienThiDonHang(donHang) {
     document.getElementById("trackingResult").innerHTML = "";
     document.getElementById("orderResult").hidden = false;
     document.getElementById("resultOrderCode").innerText = thongTin.ma || "MILO_TEA";
-    document.getElementById("resultOrderDate").innerText = "Ngày đặt: " + (thongTin.ngay || "Vừa xong");
+    document.getElementById("resultOrderDate").innerText =
+        "Ngày đặt: " + (thongTin.ngay || "Vừa xong");
 
     const oTrangThai = document.getElementById("resultStatus");
     oTrangThai.innerText = trangThai.nhan;
@@ -103,19 +109,49 @@ function hienThiDonHang(donHang) {
     document.getElementById("resultAddress").innerText = thongTin.diaChi;
     document.getElementById("resultPayment").innerText = thongTin.thanhToan || "COD";
     document.getElementById("resultNote").innerText = thongTin.ghiChu || "Không có";
-
-    document.getElementById("resultItems").innerHTML = thongTin.mon.map(function (mon) {
-        const ten = TrangThaiDon.thoat(mon.ten || "Trà sữa");
-        return `
-            <div class="dong-mon-tc">
-                <span><strong>${ten}</strong> (x${mon.soLuong})</span>
-                <span>${fmTien(mon.gia * mon.soLuong)}</span>
-            </div>
-        `;
-    }).join("");
+    document.getElementById("resultItems").innerHTML = taoDanhSachMonHtml(donHang, thongTin.mon);
     document.getElementById("resultTotal").innerText = fmTien(thongTin.tong);
 
     capNhatTienTrinh(trangThai.buoc);
+}
+
+function taoDanhSachMonHtml(donHang, cacMon) {
+    const danhSachMonGoc = layDanhSachMonGoc(donHang);
+    let html = cacMon.map(function (mon, viTri) {
+        const duLieuMon = danhSachMonGoc[viTri] || {};
+        const soLuong = Number(duLieuMon.soLuong || duLieuMon.sl || mon.soLuong) || 1;
+        const thanhTien = Number(duLieuMon.thanhTien)
+            || mon.gia * soLuong;
+        const thanhTienGoc = Number(duLieuMon.thanhTienGoc) || thanhTien;
+        const ten = TrangThaiDon.thoat(mon.ten || "Trà sữa");
+
+        return `
+            <div class="dong-mon-tc">
+                <span><strong>${ten}</strong> (x${soLuong})</span>
+                <span>${thanhTienGoc > thanhTien ? `<del>${fmTien(thanhTienGoc)}</del> ` : ""}${fmTien(thanhTien)}</span>
+            </div>
+        `;
+    }).join("");
+
+    const giamGia = Number(donHang.giamGia) || 0;
+    if (giamGia > 0) {
+        html += `
+            <div class="dong-mon-tc">
+                <span>Bạn đã tiết kiệm</span>
+                <span>${fmTien(giamGia)}</span>
+            </div>
+        `;
+    }
+
+    return html;
+}
+
+function layDanhSachMonGoc(donHang) {
+    const cacTruong = ["monAn", "danhSachMon", "danhSachSanPham", "sanPham", "gioHang", "items"];
+    const tenTruong = cacTruong.find(function (ten) {
+        return Array.isArray(donHang[ten]);
+    });
+    return tenTruong ? donHang[tenTruong] : [];
 }
 
 function capNhatTienTrinh(buocHienTai) {
@@ -129,5 +165,6 @@ function capNhatTienTrinh(buocHienTai) {
 
 function hienThiThongBao(msg, mau) {
     const khungThongBao = document.getElementById("trackingResult");
-    khungThongBao.innerHTML = `<p style="color:${mau}; font-weight:bold; padding:10px; background:#fff; border-radius:8px; display:inline-block; border:1px solid ${mau};">${msg}</p>`;
+    khungThongBao.innerHTML =
+        `<p style="color:${mau}; font-weight:bold; padding:10px; background:#fff; border-radius:8px; display:inline-block; border:1px solid ${mau};">${msg}</p>`;
 }
