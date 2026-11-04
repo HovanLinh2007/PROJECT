@@ -1,6 +1,6 @@
 const TT = TrangThaiDon;
 
-const DS_THE_THONG_KE = ["cho_giao", "dang_giao", "da_giao", "giao_that_bai"];
+const DS_THE_THONG_KE = ["cho_xac_nhan", "cho_giao", "dang_giao", "da_giao", "giao_that_bai"];
 const DS_DA_XONG = ["da_giao", "da_huy"];
 
 const bang = document.getElementById("bang-giao-hang");
@@ -80,7 +80,7 @@ function capNhatThongKe(tatCa) {
 function nhanNut(tu, den) {
   if (tu === "giao_that_bai" && den === "cho_giao") return "Giao lại";
   return {
-    dang_pha_che: "Nhận đơn",
+    dang_pha_che: tu === "cho_xac_nhan" ? "Xác nhận đơn" : "Bắt đầu pha chế",
     cho_giao: "Pha chế xong",
     dang_giao: "Bắt đầu giao",
     da_giao: "Đã giao",

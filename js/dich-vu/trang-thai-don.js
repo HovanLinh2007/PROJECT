@@ -116,7 +116,7 @@ const TrangThaiDon = (function () {
   const DONG_NGHIA = {
     "moi": "cho_xac_nhan", "da dat": "cho_xac_nhan", "cho xu ly": "cho_xac_nhan", "dang cho": "cho_xac_nhan",
     "da xac nhan": "dang_pha_che", "dang xu ly": "dang_pha_che", "dang chuan bi": "dang_pha_che",
-    "dang chuan bi hang": "dang_pha_che",
+    "dang chuan bi hang": "cho_xac_nhan",
     "dang van chuyen": "dang_giao", "dang giao hang": "dang_giao",
     "hoan thanh": "da_giao", "thanh cong": "da_giao", "da giao hang": "da_giao",
     "huy": "da_huy"

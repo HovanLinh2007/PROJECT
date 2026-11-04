@@ -232,7 +232,7 @@ function xuLyDatHang(event) {
         giamGia: tongGiamGia,
         apDungGiamGiaLanDau: tongGiamGia > 0,
         tongTien: tongTien,
-        trangThai: "Đang chuẩn bị hàng",
+        trangThai: "cho_xac_nhan",
         ngayDat: new Date().toLocaleString("vi-VN")
     };
 

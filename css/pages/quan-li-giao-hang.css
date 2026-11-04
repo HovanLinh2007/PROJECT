@@ -49,7 +49,7 @@ body.quan-tri {
 .qt-chao { color: #6b4b36; }
 
 /* ===== 4 thẻ số liệu ===== */
-.the-thong-ke { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.the-thong-ke { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; }
 .the-tk {
   display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
   padding: 26px 30px; background: #fff; border: 1px solid transparent; border-radius: 20px;
