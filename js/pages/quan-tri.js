@@ -1,14 +1,20 @@
-document.addEventListener("DOMContentLoaded", khoiTaoTongQuan);
+document.addEventListener("DOMContentLoaded", function () {
+    if (!window.miloAdminDaXacThuc) return;
+
+    const tenAdmin = document.getElementById("ten-admin-hien-tai");
+    const nguoiDung = layNguoiDungHienTai();
+    if (tenAdmin && nguoiDung) {
+        tenAdmin.textContent = "Xin chào, " + nguoiDung.hoTen;
+    }
+
+    khoiTaoTongQuan();
+});
 
 window.addEventListener("storage", function (event) {
-    if (event.key === KHOA_SAN_PHAM || event.key === KHOA_DON_HANG) {
+    if (window.miloAdminDaXacThuc && (event.key === KHOA_SAN_PHAM || event.key === KHOA_DON_HANG)) {
         khoiTaoTongQuan();
     }
 });
-
-function dangXuatAdmin() {
-    window.location.href = "./trang-chu.html";
-}
 
 async function khoiTaoTongQuan() {
     let danhSachSanPham = [];

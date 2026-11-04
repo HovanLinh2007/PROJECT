@@ -353,42 +353,37 @@ function xoaSanPham(ma) {
 }
 
 // Sự kiện
-document.getElementById("btn-them-san-pham")
-    .addEventListener("click", moFormThem);
+if (window.miloAdminDaXacThuc) {
+    document.getElementById("btn-them-san-pham")
+        .addEventListener("click", moFormThem);
 
-document.getElementById("btn-dong-modal")
-    .addEventListener("click", dongModal);
+    document.getElementById("btn-dong-modal")
+        .addEventListener("click", dongModal);
 
-document.getElementById("btn-huy-modal")
-    .addEventListener("click", dongModal);
+    document.getElementById("btn-huy-modal")
+        .addEventListener("click", dongModal);
 
-formEl.addEventListener("submit", luuSanPham);
+    formEl.addEventListener("submit", luuSanPham);
 
-timKiemEl.addEventListener("input", hienThiSanPham);
+    timKiemEl.addEventListener("input", hienThiSanPham);
 
-// Lọc danh mục
-document.querySelectorAll(".nut-loc").forEach(nut => {
+    document.querySelectorAll(".nut-loc").forEach(nut => {
+        nut.addEventListener("click", function () {
+            document.querySelectorAll(".nut-loc").forEach(btn => {
+                btn.classList.remove("active");
+            });
 
-    nut.addEventListener("click", function () {
-
-        document.querySelectorAll(".nut-loc").forEach(btn => {
-            btn.classList.remove("active");
+            this.classList.add("active");
+            boLocHienTai = this.dataset.filter;
+            hienThiSanPham();
         });
-
-        this.classList.add("active");
-
-        boLocHienTai = this.dataset.filter;
-
-        hienThiSanPham();
     });
-});
 
-// Đóng modal khi bấm ra ngoài
-modalEl.addEventListener("click", function (event) {
-    if (event.target === modalEl) {
-        dongModal();
-    }
-});
+    modalEl.addEventListener("click", function (event) {
+        if (event.target === modalEl) {
+            dongModal();
+        }
+    });
 
-// Khởi chạy
-napDanhSachSanPham();
+    napDanhSachSanPham();
+}
