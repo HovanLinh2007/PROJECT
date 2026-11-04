@@ -149,13 +149,14 @@
     border-radius: 6px;
     color: #888;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .progress-step.active {
     background: var(--mau-nau-dam, #4a2c11);
     color: #ffffff;
     border-color: var(--mau-nau-dam, #4a2c11);
+    font-weight: 700;
 }
 
 /* Chi tiết đơn hàng */
