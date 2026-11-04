@@ -1,7 +1,8 @@
-// js/pages/theo-doi-don-hang.js - Xử lý tra cứu đơn hàng realtime
+// js/pages/theo-doi-don-hang.js - Tra cứu trạng thái đơn hàng realtime
+
+let maDonDangTheoDoi = "";
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Tự động kiểm tra tham số sdt trên URL (Ví dụ: theo-doi-don-hang.html?sdt=0383496587)
     const urlParams = new URLSearchParams(window.location.search);
     const sdtTuUrl = urlParams.get("sdt");
     const maDonTuUrl = urlParams.get("madon");
@@ -13,18 +14,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("orderCode").value = maDonTuUrl;
         timKiemDonHang(maDonTuUrl, "");
     }
+
+    window.addEventListener("storage", function (event) {
+        if (event.key === KHOA_DON_HANG && maDonDangTheoDoi) {
+            capNhatDonDangTheoDoi();
+        }
+    });
 });
 
-// Hàm hỗ trợ định dạng tiền tệ
 function fmTien(so) {
-    let n = Number(so) || 0;
+    const n = Number(so) || 0;
     if (typeof dinhDangTienTe === "function") {
         return dinhDangTienTe(n);
     }
     return n.toLocaleString("vi-VN") + " đ";
 }
 
-// Xử lý khi nhấn nút Tra Cứu Đơn
 function xuLyTraCuu(event) {
     event.preventDefault();
 
@@ -39,93 +44,87 @@ function xuLyTraCuu(event) {
     timKiemDonHang(maDonInput, sdtInput);
 }
 
-// Hàm tìm kiếm và hiển thị đơn hàng từ localStorage
 function timKiemDonHang(maDon, sdt) {
-    const dsDonHang = JSON.parse(localStorage.getItem(KHOA_DON_HANG)) || [];
-    const khungKq = document.getElementById("orderResult");
-    const khungThongBao = document.getElementById("trackingResult");
-
-    if (dsDonHang.length === 0) {
-        hienThiThongBao("Chưa có dữ liệu đơn hàng nào trên hệ thống!", "#e74c3c");
-        khungKq.hidden = true;
-        return;
-    }
-
-    // Lọc đơn hàng phù hợp
-    let donHang = dsDonHang.find(item => {
-        let hopLeMa = maDon ? (item.maDon && item.maDon.toUpperCase() === maDon) : true;
-        let hopLeSdt = sdt ? (item.soDienThoai && item.soDienThoai.includes(sdt)) : true;
-        
-        if (maDon && sdt) return (item.maDon && item.maDon.toUpperCase() === maDon) || (item.soDienThoai && item.soDienThoai.includes(sdt));
-        return hopLeMa && hopLeSdt;
+    const danhSach = TrangThaiDon.docTatCa();
+    const maChuanHoa = maDon.toUpperCase();
+    const donHang = danhSach.find(function (don) {
+        const thongTin = TrangThaiDon.thongTin(don);
+        const hopLeMa = maDon ? thongTin.ma.toUpperCase() === maChuanHoa : true;
+        const hopLeSdt = sdt ? thongTin.sdt.includes(sdt) : true;
+        return maDon && sdt ? hopLeMa || hopLeSdt : hopLeMa && hopLeSdt;
     });
 
     if (!donHang) {
-        hienThiThongBao("❌ Không tìm thấy đơn hàng trùng khớp! Vui lòng kiểm tra lại thông tin.", "#e74c3c");
-        khungKq.hidden = true;
+        maDonDangTheoDoi = "";
+        hienThiThongBao(
+            danhSach.length
+                ? "❌ Không tìm thấy đơn hàng trùng khớp! Vui lòng kiểm tra lại thông tin."
+                : "Chưa có dữ liệu đơn hàng nào trên hệ thống!",
+            "#e74c3c"
+        );
+        document.getElementById("orderResult").hidden = true;
         return;
     }
 
-    // Hiển thị thông tin tìm thấy
-    khungThongBao.innerHTML = "";
-    khungKq.hidden = false;
-
-    document.getElementById("resultOrderCode").innerText = donHang.maDon || "MILO_TEA";
-    document.getElementById("resultOrderDate").innerText = "Ngày đặt: " + (donHang.ngayDat || "Vừa xong");
-    document.getElementById("resultStatus").innerText = donHang.trangThai || "Đang chuẩn bị hàng";
-
-    document.getElementById("resultName").innerText = donHang.hoTen || "Khách hàng";
-    document.getElementById("resultPhone").innerText = donHang.soDienThoai || "";
-    document.getElementById("resultAddress").innerText = donHang.diaChi || "";
-    document.getElementById("resultPayment").innerText = donHang.phuongThucTT || "COD";
-    document.getElementById("resultNote").innerText = donHang.ghiChu || "Không có";
-
-    // Dựng danh sách món
-    let itemsHtml = "";
-    if (Array.isArray(donHang.danhSachMon)) {
-        donHang.danhSachMon.forEach(mon => {
-            let ten = mon.tenSanPham || mon.ten || "Trà sữa";
-            let sl = mon.soLuong || 1;
-            let gia = Number(mon.thanhTien) || (Number(mon.donGia || mon.gia || 0) * sl);
-
-            itemsHtml += `
-                <div class="dong-mon-tc">
-                    <span><strong>${ten}</strong> (x${sl})</span>
-                    <span>${fmTien(gia)}</span>
-                </div>
-            `;
-        });
-    }
-    document.getElementById("resultItems").innerHTML = itemsHtml;
-    document.getElementById("resultTotal").innerText = fmTien(donHang.tongTien || 0);
-
-    // Cập nhật trạng thái tiến trình
-    capNhatTienTrinh(donHang.trangThai);
+    maDonDangTheoDoi = TrangThaiDon.thongTin(donHang).ma;
+    hienThiDonHang(donHang);
 }
 
-// Cập nhật bước tiến trình
-function capNhatTienTrinh(trangThai) {
-    const step1 = document.getElementById("step1");
-    const step2 = document.getElementById("step2");
-    const step3 = document.getElementById("step3");
-    const step4 = document.getElementById("step4");
+function capNhatDonDangTheoDoi() {
+    const donHang = TrangThaiDon.docTatCa().find(function (don) {
+        return TrangThaiDon.thongTin(don).ma === maDonDangTheoDoi;
+    });
 
-    // Reset
-    [step1, step2, step3, step4].forEach(s => s.classList.remove("active"));
-
-    // Mặc định luôn bật Bước 1
-    step1.classList.add("active");
-
-    if (trangThai === "Đang pha chế") {
-        step2.classList.add("active");
-    } else if (trangThai === "Đang giao hàng") {
-        step2.classList.add("active");
-        step3.classList.add("active");
-    } else if (trangThai === "Hoàn thành") {
-        step2.classList.add("active");
-        step3.classList.add("active");
-        step4.classList.add("active");
+    if (donHang) {
+        hienThiDonHang(donHang);
+    } else {
+        maDonDangTheoDoi = "";
+        document.getElementById("orderResult").hidden = true;
+        hienThiThongBao("Không tìm thấy đơn hàng này trong dữ liệu hiện tại.", "#e74c3c");
     }
+}
+
+function hienThiDonHang(donHang) {
+    const thongTin = TrangThaiDon.thongTin(donHang);
+    const trangThai = TrangThaiDon.hienThiKhach(donHang);
+
+    document.getElementById("trackingResult").innerHTML = "";
+    document.getElementById("orderResult").hidden = false;
+    document.getElementById("resultOrderCode").innerText = thongTin.ma || "MILO_TEA";
+    document.getElementById("resultOrderDate").innerText = "Ngày đặt: " + (thongTin.ngay || "Vừa xong");
+
+    const oTrangThai = document.getElementById("resultStatus");
+    oTrangThai.innerText = trangThai.nhan;
+    oTrangThai.style.backgroundColor = trangThai.mau.nen;
+    oTrangThai.style.color = trangThai.mau.chu;
+
+    document.getElementById("resultName").innerText = thongTin.ten || "Khách hàng";
+    document.getElementById("resultPhone").innerText = thongTin.sdt;
+    document.getElementById("resultAddress").innerText = thongTin.diaChi;
+    document.getElementById("resultPayment").innerText = thongTin.thanhToan || "COD";
+    document.getElementById("resultNote").innerText = thongTin.ghiChu || "Không có";
+
+    document.getElementById("resultItems").innerHTML = thongTin.mon.map(function (mon) {
+        const ten = TrangThaiDon.thoat(mon.ten || "Trà sữa");
+        return `
+            <div class="dong-mon-tc">
+                <span><strong>${ten}</strong> (x${mon.soLuong})</span>
+                <span>${fmTien(mon.gia * mon.soLuong)}</span>
+            </div>
+        `;
+    }).join("");
+    document.getElementById("resultTotal").innerText = fmTien(thongTin.tong);
+
+    capNhatTienTrinh(trangThai.buoc);
+}
+
+function capNhatTienTrinh(buocHienTai) {
+    [1, 2, 3, 4].forEach(function (soBuoc, viTri) {
+        document.getElementById("step" + soBuoc).classList.toggle(
+            "active",
+            viTri === buocHienTai
+        );
+    });
 }
 
 function hienThiThongBao(msg, mau) {

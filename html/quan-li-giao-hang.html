@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đơn hàng | MILO TEA Admin</title>
+  <!-- CSS riêng của trang, tự đủ dùng. Đặt cùng chỗ với CSS các trang khác của nhóm rồi sửa href cho đúng -->
+  <link rel="stylesheet" href="../css/pages/quan-li-giao-hang.css">
+</head>
+<body class="quan-tri">
+
+  <aside class="qt-menu">
+    <div class="qt-menu__logo">MILO TEA ADMIN</div>
+    <nav class="qt-menu__dieu-huong">
+      <a href="quan-tri.html">Tổng quan</a>
+      <a href="quan-ly-san-pham.html">Sản phẩm</a>
+      <a href="quan-li-giao-hang.html" class="dang-chon" aria-current="page">
+        <span>Đơn hàng</span>
+        <span id="badge-menu-don" class="qt-badge" hidden>0</span>
+      </a>
+      <a href="thong-ke-doanh-thu.html">Doanh thu</a>
+      <a href="#">Góp ý</a>       <!-- thay # bằng tên file thật -->
+      <a href="#">Cửa hàng</a>    <!-- thay # bằng tên file thật -->
+      <a href="#" id="nut-dang-xuat">Đăng xuất</a>
+    </nav>
+  </aside>
+
+  <main class="qt-noi-dung">
+
+    <header class="qt-tieu-de">
+      <h1>Quản lý đơn hàng &amp; giao hàng</h1>
+      <span class="qt-chao">Xin chào, Admin</span>
+    </header>
+
+    <!-- 4 thẻ số liệu (bấm vào để lọc bảng) -->
+    <section class="the-thong-ke" aria-label="Thống kê theo trạng thái">
+      <button type="button" class="the-tk" data-loc="cho_giao">
+        <span class="the-tk__icon">⏳</span>
+        <span class="the-tk__nhan">Chờ giao</span>
+        <strong id="tk-cho_giao">0</strong>
+        <span class="the-tk__ghi-chu">Đã pha chế, chờ giao đi</span>
+      </button>
+      <button type="button" class="the-tk" data-loc="dang_giao">
+        <span class="the-tk__icon">🚚</span>
+        <span class="the-tk__nhan">Đang giao</span>
+        <strong id="tk-dang_giao">0</strong>
+        <span class="the-tk__ghi-chu">Đang trên đường tới khách</span>
+      </button>
+      <button type="button" class="the-tk" data-loc="da_giao">
+        <span class="the-tk__icon">✅</span>
+        <span class="the-tk__nhan">Đã giao</span>
+        <strong id="tk-da_giao">0</strong>
+        <span class="the-tk__ghi-chu">Giao thành công</span>
+      </button>
+      <button type="button" class="the-tk" data-loc="giao_that_bai">
+        <span class="the-tk__icon">⚠️</span>
+        <span class="the-tk__nhan">Giao thất bại</span>
+        <strong id="tk-giao_that_bai">0</strong>
+        <span class="the-tk__ghi-chu">Cần liên hệ để giao lại</span>
+      </button>
+    </section>
+
+    <section class="khung-the">
+      <div class="khung-the__dau">
+        <h2>Danh sách đơn hàng</h2>
+        <a href="theo-doi-don-hang.html" target="_blank" rel="noopener" class="lien-ket-nho">Tra cứu đơn hàng</a>
+      </div>
+
+      <div class="khung-the__than">
+        <div class="thanh-cong-cu">
+          <input type="search" id="o-tim" placeholder="Tìm mã đơn, tên, SĐT, địa chỉ...">
+          <select id="loc-trang-thai" aria-label="Lọc theo trạng thái">
+            <option value="can-xu-ly">Cần xử lý (chưa giao xong, chưa hủy)</option>
+            <option value="cho_xac_nhan">Chờ xác nhận</option>
+            <option value="dang_pha_che">Đang pha chế</option>
+            <option value="cho_giao">Chờ giao</option>
+            <option value="dang_giao">Đang giao</option>
+            <option value="da_giao">Đã giao</option>
+            <option value="giao_that_bai">Giao thất bại</option>
+            <option value="da_huy">Đã hủy</option>
+            <option value="tat-ca">Tất cả đơn hàng</option>
+          </select>
+          <button type="button" id="nut-lam-moi" class="nut-phu">Làm mới</button>
+        </div>
+
+        <div class="bang-cuon">
+          <table class="bang-don">
+            <thead>
+              <tr>
+                <th>Mã đơn</th><th>Người nhận</th><th>Địa chỉ giao</th><th>Món</th>
+                <th>Tổng tiền</th><th>Trạng thái</th><th>Cập nhật</th><th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="bang-giao-hang"></tbody>
+          </table>
+        </div>
+        <p id="bang-trong" class="bang-trong" hidden>Chưa có đơn hàng nào.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="hop-chi-tiet" class="hop-chi-tiet">
+    <div id="ct-noi-dung"></div>
+    <form method="dialog"><button class="nut-chinh-nho">Đóng</button></form>
+  </dialog>
+
+  <!-- THỨ TỰ NẠP: luu-tru.js trước, rồi trang-thai-don.js. KHÔNG nạp chinh.js (của giao diện khách) -->
+  <script src="../js/dich-vu/luu-tru.js"></script>
+  <script src="../js/dich-vu/trang-thai-don.js"></script>
+  <script src="../js/pages/quan-li-giao-hang.js"></script>
+</body>
+</html>
