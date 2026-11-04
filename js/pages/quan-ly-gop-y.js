@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    hienThiDanhSachGopY();
+    if (window.miloAdminDaXacThuc) {
+        hienThiDanhSachGopY();
+    }
 });
 
 function hienThiDanhSachGopY() {
@@ -108,8 +110,4 @@ function themO(hang, noiDung) {
     o.textContent = noiDung;
     hang.appendChild(o);
     return o;
-}
-
-function dangXuatAdmin() {
-    window.location.href = "./trang-chu.html";
 }
