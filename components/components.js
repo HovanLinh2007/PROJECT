@@ -16,7 +16,6 @@ const components = [
 
 function capNhatGiaoDien() {
     const trangHienTai = window.location.pathname.split("/").pop() || "trang-chu.html";
-
     document.querySelectorAll(".menu-chinh a").forEach(function (lienKet) {
         const href = lienKet.getAttribute("href");
         if (
@@ -26,10 +25,8 @@ function capNhatGiaoDien() {
             lienKet.classList.add("active");
         }
     });
-
     document.dispatchEvent(new Event("siteComponentsLoaded"));
 }
-
 function hienThiComponent(component, html) {
     const viTri = document.querySelector(component.selector)
         || document.querySelector(component.renderedSelector);

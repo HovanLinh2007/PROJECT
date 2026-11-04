@@ -26,7 +26,6 @@ function taiDanhSachSanPhamMacDinh() {
     }
     return danhSachSanPhamMacDinhPromise;
 }
-
 async function khoiTaoDanhSachSanPham() {
     const danhSachMacDinh = await taiDanhSachSanPhamMacDinh();
     if (!localStorage.getItem(KHOA_SAN_PHAM)) {

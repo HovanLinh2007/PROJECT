@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("phone").value = sdtTuUrl;
         timKiemDonHang("", sdtTuUrl);
     } else if (maDonTuUrl) {
-        document.getElementById("orderCode").value = maDonTuUrl;
         timKiemDonHang(maDonTuUrl, "");
     }
 });
@@ -28,15 +27,14 @@ function fmTien(so) {
 function xuLyTraCuu(event) {
     event.preventDefault();
 
-    const maDonInput = document.getElementById("orderCode").value.trim().toUpperCase();
     const sdtInput = document.getElementById("phone").value.trim();
 
-    if (!maDonInput && !sdtInput) {
-        hienThiThongBao("Vui lòng nhập Mã đơn hàng hoặc Số điện thoại để tra cứu!", "orange");
+    if (!sdtInput) {
+        hienThiThongBao("Vui lòng nhập số điện thoại đặt hàng để tra cứu!", "orange");
         return;
     }
 
-    timKiemDonHang(maDonInput, sdtInput);
+    timKiemDonHang("", sdtInput);
 }
 
 // Hàm tìm kiếm và hiển thị đơn hàng từ localStorage
@@ -54,7 +52,7 @@ function timKiemDonHang(maDon, sdt) {
     // Lọc đơn hàng phù hợp
     let donHang = dsDonHang.find(item => {
         let hopLeMa = maDon ? (item.maDon && item.maDon.toUpperCase() === maDon) : true;
-        let hopLeSdt = sdt ? (item.soDienThoai && item.soDienThoai.includes(sdt)) : true;
+        let hopLeSdt = sdt ? String(item.soDienThoai || "").trim() === sdt : true;
         
         if (maDon && sdt) return (item.maDon && item.maDon.toUpperCase() === maDon) || (item.soDienThoai && item.soDienThoai.includes(sdt));
         return hopLeMa && hopLeSdt;
@@ -87,16 +85,21 @@ function timKiemDonHang(maDon, sdt) {
             let ten = mon.tenSanPham || mon.ten || "Trà sữa";
             let sl = mon.soLuong || 1;
             let gia = Number(mon.thanhTien) || (Number(mon.donGia || mon.gia || 0) * sl);
+            let giaGoc = Number(mon.thanhTienGoc);
 
             itemsHtml += `
                 <div class="dong-mon-tc">
                     <span><strong>${ten}</strong> (x${sl})</span>
-                    <span>${fmTien(gia)}</span>
+                    <span>${giaGoc > gia ? `<del>${fmTien(giaGoc)}</del> ` : ""}${fmTien(gia)}</span>
                 </div>
             `;
         });
     }
     document.getElementById("resultItems").innerHTML = itemsHtml;
+    if (Number(donHang.giamGia) > 0) {
+        itemsHtml += `<div class="dong-mon-tc"><span>Bạn đã tiết kiệm</span><span>${fmTien(donHang.giamGia)}</span></div>`;
+        document.getElementById("resultItems").innerHTML = itemsHtml;
+    }
     document.getElementById("resultTotal").innerText = fmTien(donHang.tongTien || 0);
 
     // Cập nhật trạng thái tiến trình
